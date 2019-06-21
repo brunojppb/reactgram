@@ -1,0 +1,33 @@
+.home-wrapper { 
+
+  margin: 50px 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  
+  .home {
+    display: grid;
+    grid-template-columns: 450px 350px;
+    grid-gap: 20px;
+    max-width: 935px;
+
+    @media screen and (max-width: 935px) {
+      grid-template-columns: 350px;
+    }
+
+    .mobile-app {
+      background-color:cadetblue;
+      @media screen and (max-width: 935px) {
+        display: none;
+      }
+    }
+  
+    .signup-container {
+      background-color: white;
+      border: 1px solid #e6e6e6;
+      border-radius: 5px;
+      padding: 10px;
+    }
+  }
+
+}
