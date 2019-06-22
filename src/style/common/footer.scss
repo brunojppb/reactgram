@@ -1,0 +1,38 @@
+footer {
+    width: 100%;
+    max-width: $max-container-width;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        li {
+            display: inline-block;
+            margin: 5px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            a {
+                color: $dark-blue;
+                text-decoration: none;
+            }
+        }
+    }
+
+    h2 {
+        justify-self: end;
+    }
+
+    @media screen and (max-width: $max-container-width) {
+        grid-template-columns: 1fr;
+        grid-gap: 30px;
+        align-items: center;
+        ul {
+            text-align: center;
+        }
+        h2 {
+            justify-self: center;
+        }
+    }
+}

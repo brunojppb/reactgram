@@ -1,0 +1,26 @@
+.btn {
+    display: inline-block;
+    border: none;
+    text-align: center;
+    margin: 0;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 5px 9px;
+    font-weight: 600;
+    font-size: 14px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 4px;
+
+    &.btn-block {
+        width: 100%;
+        display: block;
+    }
+
+}
+
+.btn-primary {
+    background-color: #3897f0;
+    border: 1px solid #3897f0;
+    color: #ffffff;
+}

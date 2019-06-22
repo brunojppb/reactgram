@@ -1,23 +1,35 @@
-.home-wrapper { 
+@import "../common/constants";
 
-  margin: 50px 0;
+.home-wrapper { 
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 50px;
   justify-items: center;
+  padding: 50px 0;
   
   .home {
     display: grid;
-    grid-template-columns: 450px 350px;
-    grid-gap: 20px;
-    max-width: 935px;
+    grid-template-columns: 454px 348px;
+    max-width: $max-container-width;
 
-    @media screen and (max-width: 935px) {
+    @media screen and (max-width: $max-container-width) {
       grid-template-columns: 350px;
     }
 
+    @media screen and (max-width: 500px) {
+      grid-template-columns: 1fr;
+      padding: 20px;
+    }
+
     .mobile-app {
-      background-color:cadetblue;
-      @media screen and (max-width: 935px) {
+      display: grid;
+      align-items: end;
+      justify-items: center;
+      .mobile-app-screen {
+        max-width: 350px;
+      }
+      /*background-color:cadetblue;*/
+      @media screen and (max-width: $max-container-width) {
         display: none;
       }
     }
@@ -26,7 +38,7 @@
       background-color: white;
       border: 1px solid #e6e6e6;
       border-radius: 5px;
-      padding: 10px;
+      padding: 40px;
     }
   }
 
