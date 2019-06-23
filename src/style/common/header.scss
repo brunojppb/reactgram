@@ -1,0 +1,76 @@
+@import "constants";
+
+header {
+    background-color: white;
+    padding: 20px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas: "logo search menu";
+    border-bottom: 1px solid $very-light-gray;
+
+    @media screen and (max-width: 600px) {
+        padding: 15px 20px;
+    }
+
+    .logo-container {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        justify-items: start;
+        grid-gap: 15px;
+        
+        img {
+            width: 24px;
+            height: 24px;
+        }
+
+        span {
+            display: grid;
+            grid-gap: 15px;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            font-weight: bold;
+            
+            &::before {
+                content: '';
+                display: inline-block;
+                width: 1px;
+                height: 20px;
+                background-color: #222;
+            }
+        }
+    }
+
+    .search-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-items: center;
+
+        input {
+            min-width: 215px;
+            border: 1px solid $very-light-gray;
+            padding: 5px 8px;       
+            @media screen and(max-width: 600px) {
+                display: none;
+            }
+        }
+    }
+
+    .menu-container {
+        display: grid;
+        align-items: center;
+        justify-items: end;
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            li {
+                font-size: 22px;
+            }
+        }
+    }
+}

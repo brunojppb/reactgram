@@ -1,0 +1,190 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "reacgram";
+  src:url("/fonts/reacgram.eot");
+  src:url("/fonts/reacgram.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/reacgram.woff") format("woff"),
+    url("/fonts/reacgram.ttf") format("truetype"),
+    url("/fonts/reacgram.svg#reacgram") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "reacgram" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "reacgram" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-streamline-sync:before {
+  content: "\61";
+}
+.icon-plus-circled:before {
+  content: "\62";
+}
+.icon-banknote:before {
+  content: "\63";
+}
+.icon-bubble:before {
+  content: "\64";
+}
+.icon-bulb:before {
+  content: "\65";
+}
+.icon-calendar:before {
+  content: "\66";
+}
+.icon-camera:before {
+  content: "\67";
+}
+.icon-clip:before {
+  content: "\68";
+}
+.icon-clock:before {
+  content: "\69";
+}
+.icon-cloud:before {
+  content: "\6a";
+}
+.icon-cup:before {
+  content: "\6b";
+}
+.icon-data:before {
+  content: "\6c";
+}
+.icon-diamond:before {
+  content: "\6d";
+}
+.icon-display:before {
+  content: "\6e";
+}
+.icon-eye:before {
+  content: "\6f";
+}
+.icon-fire:before {
+  content: "\70";
+}
+.icon-food:before {
+  content: "\71";
+}
+.icon-heart:before {
+  content: "\72";
+}
+.icon-key:before {
+  content: "\73";
+}
+.icon-lab:before {
+  content: "\74";
+}
+.icon-like:before {
+  content: "\75";
+}
+.icon-location:before {
+  content: "\76";
+}
+.icon-lock:before {
+  content: "\77";
+}
+.icon-mail:before {
+  content: "\78";
+}
+.icon-megaphone:before {
+  content: "\79";
+}
+.icon-music:before {
+  content: "\7a";
+}
+.icon-news:before {
+  content: "\41";
+}
+.icon-note:before {
+  content: "\42";
+}
+.icon-paperplane:before {
+  content: "\43";
+}
+.icon-params:before {
+  content: "\44";
+}
+.icon-pen:before {
+  content: "\45";
+}
+.icon-phone:before {
+  content: "\46";
+}
+.icon-photo:before {
+  content: "\47";
+}
+.icon-search:before {
+  content: "\48";
+}
+.icon-settings:before {
+  content: "\49";
+}
+.icon-shop:before {
+  content: "\4a";
+}
+.icon-sound:before {
+  content: "\4b";
+}
+.icon-stack:before {
+  content: "\4c";
+}
+.icon-star:before {
+  content: "\4d";
+}
+.icon-study:before {
+  content: "\4e";
+}
+.icon-t-shirt:before {
+  content: "\4f";
+}
+.icon-tag:before {
+  content: "\50";
+}
+.icon-trash:before {
+  content: "\51";
+}
+.icon-truck:before {
+  content: "\52";
+}
+.icon-tv:before {
+  content: "\53";
+}
+.icon-user:before {
+  content: "\54";
+}
+.icon-vallet:before {
+  content: "\55";
+}
+.icon-video:before {
+  content: "\56";
+}
+.icon-vynil:before {
+  content: "\57";
+}
+.icon-world:before {
+  content: "\58";
+}
