@@ -10,17 +10,18 @@ const OtherProfileActions = ({isFollowing}) => {
 const MyProfileActions = () => {
 
     const [showingSettings, setShowingSettings] = useState(false);
-
-    const settingsMenu = showingSettings ? <SettingsMenuOverlay/> : null;
     const toggleSettings = (e) => {
-        e.preventDefault();
-        setShowingSettings(true);
+        if (e) {
+            e.preventDefault();
+        }
+        setShowingSettings(!showingSettings);
     }
+    const settingsMenu = showingSettings ? <SettingsMenuOverlay onClose={toggleSettings}/> : null;
 
     return(
         <>
-            <a href="/" className="btn btn-default" onClick={toggleSettings}>Editar Perfil</a>
-            <a href="/"><span className="icon-settings"></span></a>
+            <a href="/" className="btn btn-default">Editar Perfil</a>
+            <a href="/"><span className="icon-settings" onClick={toggleSettings}></span></a>
             {settingsMenu}
         </>
     );

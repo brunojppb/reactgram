@@ -1,16 +1,13 @@
 import React, {useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
+/** Reusable full-screen overlay */
 export const MenuOverlay = ({onClose, ...props}) => {
 
     const ref = useRef(null);
     const handleListenner = (event) => {
-        console.log('ref: ', ref);
-        if(ref && ref.current && !ref.current.contains(event.target)) {
-            console.log('click outside. close...');
+        if (ref && ref.current && ref.current === event.target) {
             onClose();
-        } else {
-            console.log('click on menu');
         }
     };
 
