@@ -11,13 +11,13 @@ export const MainContainer = () => {
     return(
         <>  
             <Header/>
-            <main class="main">
+            <main className="main">
                 <Switch>
                     <Route path="/app/timeline" exact component={TimelinePage}/>
                     <Route path="/app/profile" exact component={UserProfilePage}/>
                 </Switch>
             </main>
-            <div class="footer-wrapper">
+            <div className="footer-wrapper">
                 <Footer/>
             </div>
         </>

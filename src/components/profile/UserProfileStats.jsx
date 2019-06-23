@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {SettingsMenuOverlay} from './SettingsMenuOverlay';
 
 const OtherProfileActions = ({isFollowing}) => {
     const btnClass = isFollowing ? 'btn-default' : 'btn-primary';
@@ -7,10 +8,20 @@ const OtherProfileActions = ({isFollowing}) => {
 }
 
 const MyProfileActions = () => {
+
+    const [showingSettings, setShowingSettings] = useState(false);
+
+    const settingsMenu = showingSettings ? <SettingsMenuOverlay/> : null;
+    const toggleSettings = (e) => {
+        e.preventDefault();
+        setShowingSettings(true);
+    }
+
     return(
         <>
-            <a href="/" className="btn btn-default">Editar Perfil</a>
+            <a href="/" className="btn btn-default" onClick={toggleSettings}>Editar Perfil</a>
             <a href="/"><span className="icon-settings"></span></a>
+            {settingsMenu}
         </>
     );
 };

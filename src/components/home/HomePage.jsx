@@ -9,7 +9,7 @@ export const HomePage = () => {
     <div className="home-wrapper">
       <div className="home">
         <div className="mobile-app">
-          <img src={phones} class="mobile-app-screen" alt="mobile phone"/>
+          <img src={phones} className="mobile-app-screen" alt="mobile phone"/>
         </div>
         <div className="signup-container">
           <h1 className="title center">Reactgram</h1>

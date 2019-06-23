@@ -110,3 +110,23 @@
         }
     }
 }
+
+.settings-menu-overlay {
+    padding: 0;
+    background-color: white;
+    width: 60%;
+    max-width: 400px;
+    list-style-type: none;
+    border-radius: 8px;
+    overflow: hidden;
+    li {
+        font-size: 14px;
+        text-align: center;
+        display: block;
+        padding: 10px 0;
+        border-bottom: 1px solid $very-light-gray;
+        &:hover {
+            background-color: $very-light-gray;
+        }
+    }
+}

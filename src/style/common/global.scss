@@ -104,3 +104,17 @@ main {
   height: 150px;
   border-radius: 75px;
 }
+
+.menu-overlay {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  background-color: rgba(1,1,1,0.5);
+}
