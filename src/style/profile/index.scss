@@ -1,0 +1,89 @@
+@import "../common/constants";
+
+.profile-page {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    align-items: start;
+    grid-gap: 30px;
+}
+
+.profile-stats-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 100px;
+    padding: 0 30px;
+    
+    .profile-container {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        align-items: center;
+        
+        .profile-settings {
+            display: grid;
+            grid-template-columns: auto auto 1fr;
+            grid-gap: 15px;
+            justify-items: start;
+            align-items: center;
+            span {
+                font-size: 22px;
+            }
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            grid-gap: 30px;
+            justify-content: start;
+        }
+
+    }
+}
+
+.user-posts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 293px);
+    grid-auto-rows: 293px;
+    grid-gap: 5px;
+    justify-content: center;
+
+    @media screen and(max-width: $max-container-width) {
+        grid-template-columns: repeat(auto-fill, 200px);
+        grid-auto-rows: 200px;
+    }
+
+    @media screen and(max-width: 610px) {
+        grid-template-columns: repeat(auto-fill, 120px);
+        grid-auto-rows: 120px;
+    }
+    
+    .post-thumb {
+        position: relative;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .post-stats-overlay {
+            position: absolute;
+            background-color: rgba(1,1,1,0.4);
+            color: white;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-gap: 20px;
+            align-items: center;
+            justify-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.1s ease-in;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}

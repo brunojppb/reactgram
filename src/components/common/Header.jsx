@@ -1,11 +1,12 @@
 import React from 'react';
 import logo from '../../img/logo.svg';
+import {Link} from 'react-router-dom';
 
 export const Header = () => {
     return(
         <header>
             <div className="logo-container">
-                <img src={logo} alt="reactgram logo"/>
+                <Link to="/app/timeline"><img src={logo} alt="reactgram logo"/></Link>
                 <span>Reactgram</span>
             </div>
             <div className="search-container">
@@ -20,7 +21,7 @@ export const Header = () => {
                         <a href="/"><span className="icon-heart"/></a>
                     </li>
                     <li>
-                        <a href="/"><span className="icon-user"/></a>
+                        <Link to="/app/profile"><span className="icon-user"/></Link>
                     </li>
                 </ul>
             </div>

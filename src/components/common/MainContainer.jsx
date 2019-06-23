@@ -1,7 +1,9 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import {TimelinePage} from '../timeline/TimelinePage';
+import {Switch, Route} from 'react-router-dom';
+
 import { Header } from './Header';
+import {TimelinePage} from '../timeline/TimelinePage';
+import {UserProfilePage} from '../profile/UserProfilePage';
 
 export const MainContainer = () => {
 
@@ -9,9 +11,10 @@ export const MainContainer = () => {
         <>  
             <Header/>
             <main class="main">
-                <Router>
-                    <Route path="/app/timeline" component={TimelinePage}/>
-                </Router>
+                <Switch>
+                    <Route path="/app/timeline" exact component={TimelinePage}/>
+                    <Route path="/app/profile" exact component={UserProfilePage}/>
+                </Switch>
             </main>
         </>
     );
