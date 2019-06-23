@@ -1,10 +1,13 @@
 import React from 'react';
+import {Post} from '../post/Post';
+import {ProfileSummary} from './ProfileSummary';
 
 export const TimelinePage = () => {
 
     return(
-        <div>
-            <h2>Timeline Page</h2>
+        <div className="timeline">
+            <Post/>
+            <ProfileSummary/>
         </div>
     );
 
