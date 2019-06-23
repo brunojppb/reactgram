@@ -11,7 +11,7 @@
     display: grid;
     grid-template-columns: auto 1fr;
     grid-gap: 100px;
-    padding: 0 30px;
+    padding: 0 40px;
     
     .profile-container {
         display: grid;
@@ -27,6 +27,14 @@
             span {
                 font-size: 22px;
             }
+
+            @media screen and(max-width: 615px) {
+                grid-template-areas: "name edit settings";
+                span {
+                    grid-column-start: 1;
+                    grid-column-end: -1;
+                }
+            }
         }
 
         .profile-stats {
@@ -34,8 +42,23 @@
             grid-template-columns: repeat(3, auto);
             grid-gap: 30px;
             justify-content: start;
+
+            @media screen and(max-width: 615px) {
+                grid-gap: 10px;
+                font-size: 12px;
+            }
         }
 
+    }
+
+    // Mobile
+    @media screen and (max-width: 615px) {
+        grid-gap: 20px;
+        img {
+            width: 77px;
+            height: 77px;
+            border-radius: 50%;   
+        }
     }
 }
 
@@ -74,7 +97,7 @@
             height: 100%;
             display: grid;
             grid-template-columns: auto auto;
-            grid-gap: 20px;
+            grid-gap: 10px;
             align-items: center;
             justify-items: center;
             justify-content: center;

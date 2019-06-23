@@ -6,7 +6,7 @@ import {UserPosts} from './UserPosts';
 export const UserProfilePage = () => {
     return(
         <div className="profile-page">
-            <UserProfileStats/>
+            <UserProfileStats />
             <UserPosts/>
         </div>
     );
