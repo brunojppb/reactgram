@@ -9,6 +9,12 @@
         justify-content: center;
     }
 
+    .posts {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-gap: 20px;
+    }
+
     .profile-suggestions-container {
         display: grid;
         grid-template-columns: auto 1fr;
@@ -18,6 +24,7 @@
         .profile-details {
             display: grid;
             grid-template-rows: 1fr 1fr;
+            grid-gap: 5px;
             align-items: center;
             .profile-stats {
                 display: grid;
@@ -26,6 +33,11 @@
                 color: $light-gray;
             }
         }
+
+        .profile-suggestions {
+            display: grid;
+        }
+
         @media screen and (max-width: $max-container-width) {
             display: none;
         }

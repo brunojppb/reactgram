@@ -34,6 +34,7 @@ a {
 
 main {
   padding-top: 120px;
+  padding-bottom: 30px;
   display: grid;
   grid-template-columns: minmax(0, $max-container-width);
   justify-content: center;

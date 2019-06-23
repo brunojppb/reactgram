@@ -7,12 +7,12 @@
         <g id="Desktop" transform="translate(-366.000000, -231.000000)">
             <g id="Group" transform="translate(366.000000, 231.000000)">
                 <rect id="Rectangle" stroke="#222222" stroke-width="8" x="4" y="4" width="142" height="142" rx="30"></rect>
-                <rect id="Rectangle" stroke="#222222" fill="#222222" x="117.5" y="16.5" width="16" height="16" rx="8"></rect>
+                <rect id="Rectangle" stroke="#222222" fill="#222222" x="113.5" y="20.5" width="16" height="16" rx="8"></rect>
                 <g id="react_logo" transform="translate(22.000000, 20.000000)">
                     <ellipse id="Oval" stroke="#222222" stroke-width="8" transform="translate(53.161339, 54.500000) rotate(-30.000000) translate(-53.161339, -54.500000) " cx="53.1613392" cy="54.5" rx="18.290345" ry="52.3249508"></ellipse>
                     <ellipse id="Oval" stroke="#222222" stroke-width="8" transform="translate(52.746559, 54.761792) rotate(30.000000) translate(-52.746559, -54.761792) " cx="52.7465587" cy="54.7617925" rx="18.290345" ry="52.3249508"></ellipse>
                     <ellipse id="Oval" stroke="#222222" stroke-width="8" transform="translate(52.500000, 54.000000) rotate(90.000000) translate(-52.500000, -54.000000) " cx="52.5" cy="54" rx="18.5" ry="52"></ellipse>
-                    <circle id="Oval" fill="#222222" cx="52.5" cy="55.5" r="9.5"></circle>
+                    <circle id="Oval" stroke="#979797" fill="#222222" cx="52.5" cy="55.5" r="9.5"></circle>
                 </g>
             </g>
         </g>

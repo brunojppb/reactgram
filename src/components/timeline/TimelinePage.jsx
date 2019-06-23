@@ -6,7 +6,11 @@ export const TimelinePage = () => {
 
     return(
         <div className="timeline">
-            <Post/>
+            <div className="posts">
+                <Post/>
+                <Post/>
+                <Post/>
+            </div>
             <ProfileSummary/>
         </div>
     );

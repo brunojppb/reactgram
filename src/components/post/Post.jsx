@@ -1,7 +1,8 @@
 import React from 'react';
 
 export const Post = () => {
-
+    const width = Math.floor(Math.random() * (1280 - 800) + 800);
+    const height = Math.floor(Math.random() * (720 - 500) + 500);
     return(
         <div class="post">
             <div className="post-header">
@@ -10,7 +11,7 @@ export const Post = () => {
                 <a href="/" className="post-settings"><span className="icon-params"></span></a>
             </div>
             <div className="post-content">
-                <img src="https://picsum.photos/800" alt="post"/>
+                <img src={`https://picsum.photos/${width}/${height}`} alt="post"/>
             </div>
             <div className="post-controls">
                 <div className="controls">
