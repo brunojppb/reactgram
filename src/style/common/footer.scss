@@ -36,3 +36,11 @@ footer {
         }
     }
 }
+
+// wrapper for reusing footer after login
+.footer-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 10px 0 20px 0;
+}

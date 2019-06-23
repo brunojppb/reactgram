@@ -4,6 +4,7 @@ import {Switch, Route} from 'react-router-dom';
 import { Header } from './Header';
 import {TimelinePage} from '../timeline/TimelinePage';
 import {UserProfilePage} from '../profile/UserProfilePage';
+import {Footer} from '../common/Footer';
 
 export const MainContainer = () => {
 
@@ -16,6 +17,9 @@ export const MainContainer = () => {
                     <Route path="/app/profile" exact component={UserProfilePage}/>
                 </Switch>
             </main>
+            <div class="footer-wrapper">
+                <Footer/>
+            </div>
         </>
     );
 
