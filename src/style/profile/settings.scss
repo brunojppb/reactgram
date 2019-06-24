@@ -1,0 +1,90 @@
+@import '../common/constants';
+
+.profile-settings-container {
+  display: grid;
+  grid-template-columns: 236px 1fr;
+  background-color: white;
+  border: 1px solid $omg-very-light-gray;
+  border-radius: 4px;
+
+  @media screen and(max-width: $max-container-width) {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-menu {
+    border-right: 1px solid $omg-very-light-gray;
+    @media screen and(max-width: $max-container-width) {
+      display: none;
+    }
+    
+    ul {
+      padding: 0 0;
+      list-style-type: none;
+      li > a {
+        display: block;
+        padding: 15px 30px;
+        border-left: 2px solid white;
+        &:hover {
+          background-color: $very-light-gray;
+          border-color: $light-gray;
+        }
+        &.active {
+          border-color: $dark-blue;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .settings-content {
+    padding: 20px;
+
+    .edit-picture {
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-gap: 5x;
+      span {
+        font-size: 20px;
+        font-weight: 400;
+      }
+      a {
+        font-size: 14px;
+        font-weight: bold;
+        color: $light-blue;
+      }
+    }
+
+  }
+}
+
+.form-group {
+  display: grid;
+  grid-template-columns: 150px minmax(1px, 300px);
+  margin: 10px 0;
+
+  @media screen and(max-width: $max-container-width) {
+    grid-template-columns: none;
+    grid-template-rows: 1fr;
+  }
+  
+  img {
+    justify-self: right;
+    margin-right: 20px;
+
+    @media screen and(max-width: $max-container-width) {
+      justify-self: left;
+    }
+  }
+
+  label {
+    align-self: center;
+    justify-self: right;
+    padding-right: 20px;
+    font-weight: bold;
+
+    @media screen and(max-width: $max-container-width) {
+      justify-self: left;
+    }
+  }
+
+}

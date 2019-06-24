@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
+
 import {SettingsMenuOverlay} from './SettingsMenuOverlay';
 
 const OtherProfileActions = ({isFollowing}) => {
@@ -20,7 +22,7 @@ const MyProfileActions = () => {
 
     return(
         <>
-            <a href="/" className="btn btn-default">Editar Perfil</a>
+            <Link to="/app/profile/settings" className="btn btn-default">Editar Perfil</Link>
             <a href="/"><span className="icon-settings" onClick={toggleSettings}></span></a>
             {settingsMenu}
         </>

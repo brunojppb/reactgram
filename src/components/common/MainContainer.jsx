@@ -5,6 +5,7 @@ import { Header } from './Header';
 import {TimelinePage} from '../timeline/TimelinePage';
 import {UserProfilePage} from '../profile/UserProfilePage';
 import {Footer} from '../common/Footer';
+import { ProfileSettingsPage } from '../profile/ProfileSettingsPage';
 
 export const MainContainer = () => {
 
@@ -15,6 +16,7 @@ export const MainContainer = () => {
                 <Switch>
                     <Route path="/app/timeline" exact component={TimelinePage}/>
                     <Route path="/app/profile" exact component={UserProfilePage}/>
+                    <Route path="/app/profile/settings" component={ProfileSettingsPage}/>
                 </Switch>
             </main>
             <div className="footer-wrapper">
