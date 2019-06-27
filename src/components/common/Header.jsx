@@ -1,8 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from '../../img/logo.svg';
 import {Link} from 'react-router-dom';
 
+import {NotificationsOverlay} from '../notifications/NotificationsOverlay';
+
 export const Header = () => {
+
+    const [isNotifShown, setIsNotifShown] = useState(false);
+    const toggleNotifications = (e) => {
+        e.preventDefault();
+        setIsNotifShown(!isNotifShown);
+    };
+
     return(
         <header>
             <div className="header-container">
@@ -18,8 +27,9 @@ export const Header = () => {
                         <li>
                             <a href="/"><span className="icon-world"/></a>
                         </li>
-                        <li>
-                            <a href="/"><span className="icon-heart"/></a>
+                        <li style={{position: 'relative'}}>
+                            <a href="/"><span className="icon-heart" onClick={toggleNotifications}/></a>
+                            { isNotifShown && <NotificationsOverlay/> }
                         </li>
                         <li>
                             <Link to="/app/profile"><span className="icon-user"/></Link>
