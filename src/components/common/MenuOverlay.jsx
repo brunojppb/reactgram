@@ -1,7 +1,8 @@
 import React, {useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-/** Reusable full-screen overlay */
+/** Reusable full-screen overlay 
+ * Dismissible on click outside of children */
 export const MenuOverlay = ({onClose, ...props}) => {
 
     const ref = useRef(null);

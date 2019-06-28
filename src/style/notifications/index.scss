@@ -27,6 +27,8 @@
     position: absolute;
     top: 35px;
     min-height: 100px;
+    max-height: 400px;
+    overflow-y: scroll;
     background-color: white;
     border: 1px solid $very-light-gray;
     border-radius: 3px;
@@ -36,17 +38,20 @@
     box-shadow: 0 0 5px rgba(0,0,0,.0975);
 
     display: grid;
-    padding: 15px;
     grid-template-rows: auto;
     grid-auto-rows: auto;
-    grid-gap: 20px;
 }
 
 .notification-item {
+    z-index: 40;
     display: grid;
     grid-template-columns: auto 1fr auto;
-    grid-gap: 5px;
     align-items: center;
+    padding: 15px;
+    &:hover {
+        background-color: $very-light-gray;
+        cursor: pointer;
+    }
     
     .user-sm {
         width: 30px;
@@ -62,6 +67,22 @@
         width: 40px;
         height: 40px;
         object-fit: cover;
+    }
+
+    .description {
+        margin: 0 10px;
+        span {
+            display: inline-block;
+            margin: 0 2px;
+        }
+        .content {
+            font-size: 14px;
+        }
+
+        .time {
+            font-size: 12px;
+            color: $light-gray;
+        }
     }
     
 }

@@ -29,7 +29,7 @@ export const Header = () => {
                         </li>
                         <li style={{position: 'relative'}}>
                             <a href="/"><span className="icon-heart" onClick={toggleNotifications}/></a>
-                            { isNotifShown && <NotificationsOverlay/> }
+                            { isNotifShown && <NotificationsOverlay onClose={toggleNotifications}/> }
                         </li>
                         <li>
                             <Link to="/app/profile"><span className="icon-user"/></Link>
