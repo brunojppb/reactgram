@@ -17,7 +17,7 @@ export const Header = () => {
             <div className="header-container">
                 <div className="logo-container">
                     <Link to="/app/timeline"><img src={logo} alt="reactgram logo"/></Link>
-                    <span>Reactgram</span>
+                    <Link to="/app/timeline"><span>Reactgram</span></Link>
                 </div>
                 <div className="search-container">
                     <input className="form-control" placeholder="busca"/>
@@ -25,7 +25,7 @@ export const Header = () => {
                 <div className="menu-container">
                     <ul>
                         <li>
-                            <a href="/"><span className="icon-world"/></a>
+                            <Link to="/app/post/add"><span className="icon-photo"/></Link>
                         </li>
                         <li style={{position: 'relative'}}>
                             <a href="/"><span className="icon-heart" onClick={toggleNotifications}/></a>

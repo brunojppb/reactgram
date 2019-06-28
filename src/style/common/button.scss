@@ -20,6 +20,15 @@
         display: block;
     }
 
+    &:disabled {
+        border-color: white;
+        background-color: $very-light-gray;
+        color: $light-gray;
+        &:hover {
+            cursor: not-allowed;
+        }
+    }
+
 }
 
 .btn-default {
