@@ -16,8 +16,8 @@ export const Header = () => {
         <header>
             <div className="header-container">
                 <div className="logo-container">
-                    <Link to="/app/timeline"><img src={logo} alt="reactgram logo"/></Link>
-                    <Link to="/app/timeline"><span>Reactgram</span></Link>
+                    <Link to="/app"><img src={logo} alt="reactgram logo"/></Link>
+                    <Link to="/app"><span>Reactgram</span></Link>
                 </div>
                 <div className="search-container">
                     <input className="form-control" placeholder="busca"/>
