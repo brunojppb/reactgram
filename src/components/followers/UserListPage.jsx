@@ -36,7 +36,7 @@ UserListPage = withRouter(UserListPage);
 
 // TODO: Call followers endpoint
 export const FollowersPage = ({history}) => {
-  const users = [...Array(30).keys()];
+  const users = [...Array(5).keys()];
   return(
     <UserListPage title="Seguidores" users={users}/>
   );

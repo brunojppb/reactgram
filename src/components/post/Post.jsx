@@ -24,9 +24,9 @@ export const PostControls = () => {
     return(
         <div className="post-controls">
             <div className="controls">
-                <a href="/"><span className="icon-heart"/></a>
-                <a href="/"><span className="icon-bubble"/></a>
-                <a href="/"><span className="icon-paperplane"/></a>
+                <button className="link"><span className="icon-heart"/></button>
+                <button className="link"><span className="icon-bubble"/></button>
+                <button className="link"><span className="icon-paperplane"/></button>
             </div>
         </div>
     );
