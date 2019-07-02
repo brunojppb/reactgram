@@ -15,13 +15,12 @@
     overflow: auto;
     border-radius: 0 3px 3px 0;
     background-color: white;
+    position: relative;
     display: grid;
-    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    grid-template-rows: auto 1fr;
     grid-template-areas:
         "header"
-        "comments"
-        "actions"
-        "add_comment";
+        "content";
 
     .post-header {
       border-bottom: 1px solid $very-light-gray;
@@ -29,7 +28,12 @@
     }
 
     .comments-container {
-      max-height: 334px;
+      position: absolute;
+      top: 78px;
+      bottom: 0;
+    }
+
+    .comments-container {
       overflow-y: scroll;
       border-bottom: 1px solid $very-light-gray;
     }

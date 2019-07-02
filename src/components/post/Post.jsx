@@ -57,7 +57,7 @@ export const Comment = ({username, content}) => {
 export const CommentPicture = ({username, content}) => {
     return(
         <div className="comment-picture-container">
-            <img src="https://picsum.photos/50" class="user-img-small" alt="profile"/>
+            <img src="https://picsum.photos/50" className="user-img-small" alt="profile"/>
             <Comment username={username} content={content} />
         </div>
     );
