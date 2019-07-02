@@ -1,12 +1,13 @@
 import React from 'react';
 import {NavLink, Switch, Route} from 'react-router-dom';
+import Routes from '../../Routes';
 
 const SettingsSidebar = () => {
   return(
     <ul>
-      <li><NavLink exact to="/app/profile/settings" activeClassName="active">Editar Perfil</NavLink></li>
-      <li><NavLink to="/app/profile/settings/pw" activeClassName="active">Mudar Senha</NavLink></li>
-      <li><a href="#">Sair</a></li>
+      <li><NavLink exact to={Routes.SETTINGS} activeClassName="active">Editar Perfil</NavLink></li>
+      <li><NavLink to={Routes.CHANGE_PASSWORD} activeClassName="active">Mudar Senha</NavLink></li>
+      <li><button className="link">Sair</button></li>
     </ul>
   );
 }
@@ -40,7 +41,7 @@ const EditProfileForm = () => {
         <img src="https://picsum.photos/150" className="user-img" alt="profile"/>
         <div className="edit-picture">
           <span>Bruno Paulino</span>
-          <a href="#">Atualizar foto</a>
+          <button className="link">Atualizar foto</button>
         </div>
       </div>
       <div className="form-group">
@@ -71,8 +72,8 @@ export const ProfileSettingsPage = () => {
       </div>
       <div className="settings-content">
         <Switch>
-          <Route path="/app/profile/settings" exact component={EditProfileForm}/>
-          <Route path="/app/profile/settings/pw" component={EditPasswordForm}/>
+          <Route path={Routes.SETTINGS} exact component={EditProfileForm}/>
+          <Route path={Routes.CHANGE_PASSWORD} component={EditPasswordForm}/>
         </Switch>
       </div>
     </div>

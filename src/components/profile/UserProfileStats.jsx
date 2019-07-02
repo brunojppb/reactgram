@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 
 import {SettingsMenuOverlay} from './SettingsMenuOverlay';
+import Routes from '../../Routes';
 
+// TODO: Follow/Unfollow button
 const OtherProfileActions = ({isFollowing}) => {
     const btnClass = isFollowing ? 'btn-default' : 'btn-primary';
     const text = isFollowing ? 'deixar de seguir' : 'seguir';
-    return <a href="/" className={`btn ${btnClass}`}>{text}</a>;
+    return <button className={`btn ${btnClass}`}>{text}</button>;
 }
 
 const MyProfileActions = () => {
@@ -22,8 +24,9 @@ const MyProfileActions = () => {
 
     return(
         <>
-            <Link to="/app/profile/settings" className="btn btn-default">Editar Perfil</Link>
-            <a href="/"><span className="icon-settings" onClick={toggleSettings}></span></a>
+            <Link to={Routes.SETTINGS} className="btn btn-default">Editar Perfil</Link>
+            {/* TODO: Use button instead of A tag */}
+            <button className="link"><span className="icon-settings" onClick={toggleSettings}></span></button>
             {settingsMenu}
         </>
     );
@@ -41,8 +44,8 @@ export const UserProfileStats = ({notMyProfile = false}) => {
                 </div>
                 <div className="profile-stats">
                     <span><strong>105</strong> posts</span>
-                    <span><strong>780</strong> seguidores</span>
-                    <span><strong>35</strong> seguindo</span>
+                    <span><Link to={Routes.FOLLOWERS}><strong>780</strong> seguidores</Link></span>
+                    <span><Link to={Routes.FOLLOWING}><strong>35</strong> seguindo</Link></span>
                 </div>
                 <div className="profile-description">
                     <p>

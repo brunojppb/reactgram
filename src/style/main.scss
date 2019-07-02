@@ -6,6 +6,8 @@
 @import './post/index';
 @import './post/add-post';
 @import './post/post-page.scss';
+
+// TODO: Refactor to import only index CSSS from each component folder
 @import './profile/index';
-@import './profile/settings';
+
 @import './notifications/index.scss';

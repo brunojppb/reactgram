@@ -1,5 +1,5 @@
 import React from 'react';
-import { Comment, CommentPicture, PostControls } from './Post';
+import { CommentPicture, PostControls } from './Post';
 
 export const PostPage = () => {
 

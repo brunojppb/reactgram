@@ -8,6 +8,7 @@ import {Footer} from '../common/Footer';
 import { ProfileSettingsPage } from '../profile/ProfileSettingsPage';
 import {AddPostPage} from '../post/AddPostPage';
 import { PostPage } from '../post/PostPage';
+import Routes from '../../Routes';
 
 export const MainContainer = () => {
 
@@ -16,12 +17,11 @@ export const MainContainer = () => {
             <Header/>
             <main className="main">
                 <Switch>
-                    <Route path="/app" exact component={TimelinePage}/>
-                    <Route path="/app/timeline" exact component={TimelinePage}/>
-                    <Route path="/app/profile" exact component={UserProfilePage}/>
-                    <Route path="/app/profile/settings" component={ProfileSettingsPage}/>
-                    <Route path="/app/post/add" exact component={AddPostPage}/>
-                    <Route path="/app/post" exact component={PostPage}/>
+                    <Route path={Routes.TIMELINE} exact component={TimelinePage}/>
+                    <Route path={Routes.ADD_POST} exact component={AddPostPage}/>
+                    <Route path={Routes.POST} exact component={PostPage}/>
+                    <Route path={Routes.PROFILE} component={UserProfilePage}/>
+                    <Route path={Routes.SETTINGS} component={ProfileSettingsPage}/>
                 </Switch>
             </main>
             <div className="footer-wrapper">

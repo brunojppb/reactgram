@@ -20,10 +20,13 @@
     ul {
       padding: 0 0;
       list-style-type: none;
-      li > a {
+      li > * {
         display: block;
         padding: 15px 30px;
         border-left: 2px solid white;
+        font-size: 16px;
+        width: 100%;
+        text-align: left;
         &:hover {
           background-color: $very-light-gray;
           border-color: $light-gray;
@@ -47,10 +50,11 @@
         font-size: 20px;
         font-weight: 400;
       }
-      a {
+      button {
         font-size: 14px;
         font-weight: bold;
         color: $light-blue;
+        text-align: left;
       }
     }
 

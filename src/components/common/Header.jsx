@@ -3,6 +3,7 @@ import logo from '../../img/logo.svg';
 import {Link} from 'react-router-dom';
 
 import {NotificationsOverlay} from '../notifications/NotificationsOverlay';
+import Routes from '../../Routes';
 
 export const Header = () => {
 
@@ -16,8 +17,8 @@ export const Header = () => {
         <header>
             <div className="header-container">
                 <div className="logo-container">
-                    <Link to="/app"><img src={logo} alt="reactgram logo"/></Link>
-                    <Link to="/app"><span>Reactgram</span></Link>
+                    <Link to={Routes.TIMELINE}><img src={logo} alt="reactgram logo"/></Link>
+                    <Link to={Routes.TIMELINE}><span>Reactgram</span></Link>
                 </div>
                 <div className="search-container">
                     <input className="form-control" placeholder="busca"/>
@@ -25,14 +26,14 @@ export const Header = () => {
                 <div className="menu-container">
                     <ul>
                         <li>
-                            <Link to="/app/post/add"><span className="icon-photo"/></Link>
+                            <Link to={Routes.ADD_POST}><span className="icon-photo"/></Link>
                         </li>
                         <li style={{position: 'relative'}}>
                             <a href="/"><span className="icon-heart" onClick={toggleNotifications}/></a>
                             { isNotifShown && <NotificationsOverlay onClose={toggleNotifications}/> }
                         </li>
                         <li>
-                            <Link to="/app/profile"><span className="icon-user"/></Link>
+                            <Link to={Routes.PROFILE}><span className="icon-user"/></Link>
                         </li>
                     </ul>
                 </div>
