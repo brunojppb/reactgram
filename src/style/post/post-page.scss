@@ -31,11 +31,27 @@
       position: absolute;
       top: 78px;
       bottom: 0;
+      overflow-y: scroll;
+      padding: 0;
+      border-bottom: 1px solid $very-light-gray;
+      .list {
+        margin-bottom: 80px;
+      }
     }
 
-    .comments-container {
-      overflow-y: scroll;
-      border-bottom: 1px solid $very-light-gray;
+    .post-controls {
+      position: sticky;
+      bottom: 31px;
+      background-color: white;
+    }
+
+    .add-comment {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      background-color: white;
     }
 
   }

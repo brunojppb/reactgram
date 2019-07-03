@@ -20,9 +20,9 @@ export const PostPage = () => {
               })
             } 
           </div>
-          <PostControls/>
-          <div>
-            Add Comment
+          <div className="add-comment">
+            <PostControls/>
+            <input type="text" className="form-control" placeholder="adicione um comentário" />
           </div>
         </div>
       </div>
