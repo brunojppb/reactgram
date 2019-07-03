@@ -1,5 +1,6 @@
 @import '../common/constants';
 .post-page-container {
+  min-height: 300px;
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-areas: "img content";
