@@ -5,7 +5,7 @@ export const PostPage = () => {
 
   return(
     <div className="post-page-container">
-      <img src="https://picsum.photos/300/300" alt="post pic" />
+      <img src="https://picsum.photos/500/500" alt="post pic" />
       <div className="post-details-container">
         <div className="post-header">
           <img src="https://picsum.photos/50" className="user-img-small" alt="profile"/>
@@ -15,7 +15,7 @@ export const PostPage = () => {
         <div className="comments-container">
           <div className="list">
             { 
-              [...Array(2).keys()].map(i => {
+              [...Array(30).keys()].map(i => {
                 return <CommentPicture key={i} username="Jonny Due" content="It's a flying pizza aboard the space station and it is loaded with toppings! From left, inside the Zvezda service module are, Flight Engineers Anne McClain, Alexey Ovchinin and Nick Hague; Commander Oleg Kononenko and Flight Engineer David Saint-Jacques."/>
               })
             } 
