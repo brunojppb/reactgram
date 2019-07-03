@@ -5,7 +5,7 @@ export const PostPage = () => {
 
   return(
     <div className="post-page-container">
-      <img src="https://picsum.photos/800/800" alt="post pic" />
+      <img src="https://picsum.photos/300/300" alt="post pic" />
       <div className="post-details-container">
         <div className="post-header">
           <img src="https://picsum.photos/50" className="user-img-small" alt="profile"/>
