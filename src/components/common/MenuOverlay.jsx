@@ -6,18 +6,18 @@ import PropTypes from 'prop-types';
 export const MenuOverlay = ({onClose, ...props}) => {
 
     const ref = useRef(null);
-    const handleListenner = (event) => {
-        if (ref && ref.current && ref.current === event.target) {
-            onClose();
-        }
-    };
 
     useEffect(() => {
+        const handleListenner = (event) => {
+          if (ref && ref.current && ref.current === event.target) {
+              onClose();
+          }
+      };
         document.addEventListener('mousedown', handleListenner);
         return(() => {
             document.removeEventListener('mouseDown', handleListenner);
         })
-    });
+    }, [onClose]);
 
     return(
         <div className="menu-overlay" ref={ref}>
