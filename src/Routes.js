@@ -1,6 +1,7 @@
 export default class Routes {
 
-  static LOGIN            = '/';
+  static INDEX            = '/';
+  static LOGIN            = '/login';
   static TIMELINE         = '/app';
   static PROFILE          = '/app/profile'; // TODO: Use function to construct profile route
   static FOLLOWERS        = '/app/profile/followers' // TODO: User function to construct followers route
