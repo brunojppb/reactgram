@@ -84,5 +84,30 @@
             color: $light-gray;
         }
     }
-    
+}
+
+.notification-sheet {
+  position: fixed;
+  z-index: 99;
+  bottom: 16px;
+  right: 16px;
+  width: 320px;
+
+  .notification-sheet-item {
+    position: relative;
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 8px;
+    background-color: #222;
+    color: white;
+    border-radius: 3px;
+    .progress {
+      position: absolute;
+      bottom: 0;
+      height: 8px;
+      background-color: $light-blue;
+      left: 0;
+      right: 100%;
+    }
+  }
 }

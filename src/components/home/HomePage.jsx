@@ -1,10 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-
 import {Footer} from '../common/Footer';
-import {SignupForm} from './SignupPage';
 import phones from '../../img/mobile_phones.png';
-import Routes from '../../Routes';
 
 export const HomePage = ({children}) => {
 
