@@ -4,7 +4,7 @@ export const AddPostPage = () => {
 
     const maxTitle = 144;
     const [title, setTitle] = useState('');
-    const [image, setImage] = useState(null);
+    const [image] = useState(null);
     const inputRef = useRef(null);
 
     const onClick = (e) => {

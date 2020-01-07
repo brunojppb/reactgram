@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {NavLink, Switch, Route} from 'react-router-dom';
 import Routes from '../../Routes';
+import { AuthContext } from '../auth/AuthWrapper';
 
 const SettingsSidebar = () => {
+
+  const {onLogout} = useContext(AuthContext);
+
   return(
     <ul>
       <li><NavLink exact to={Routes.SETTINGS} activeClassName="active">Editar Perfil</NavLink></li>
       <li><NavLink to={Routes.CHANGE_PASSWORD} activeClassName="active">Mudar Senha</NavLink></li>
-      <li><button className="link">Sair</button></li>
+      <li><button className="link" onClick={() => onLogout()}>Sair</button></li>
     </ul>
   );
 }

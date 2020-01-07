@@ -11,4 +11,8 @@ export default class Routes {
   static SETTINGS         = '/app/settings';
   static CHANGE_PASSWORD  = '/app/settings/pw';
 
+  static shouldRedirectToLogin(pathname) {
+    return pathname !== Routes.LOGIN && pathname !== Routes.INDEX
+  }
+
 }

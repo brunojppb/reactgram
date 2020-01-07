@@ -18,8 +18,8 @@ export const useForm = (onSubmit) => {
     };
   
     return [
-        handleChange,
-        handleSubmit,
         values,
+        handleSubmit,
+        handleChange,
     ];
   };

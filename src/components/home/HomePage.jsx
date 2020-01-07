@@ -1,6 +1,8 @@
 import React from 'react';
 import {Footer} from '../common/Footer';
 import phones from '../../img/mobile_phones.png';
+import { Link } from 'react-router-dom';
+import Routes from '../../Routes';
 
 export const HomePage = ({children}) => {
 
@@ -11,7 +13,9 @@ export const HomePage = ({children}) => {
           <img src={phones} className="mobile-app-screen" alt="mobile phone"/>
         </div>
         <div className="home-form-container">
-          <h1 className="title center">Reactgram</h1>
+          <h1 className="title center">
+            <Link to={Routes.INDEX}>Reactgram</Link>
+          </h1>
           {children}
         </div>
       </div>

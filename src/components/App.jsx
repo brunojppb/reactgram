@@ -7,20 +7,35 @@ import { NotFound } from './common/NotFound';
 import { SignupPage } from './home/SignupPage';
 import { LoginPage } from './home/LoginPage';
 import { NotificationWrapper } from './common/NotificationSheet';
+import { AuthWrapper } from './auth/AuthWrapper';
+import { ProtectedRoute } from './auth/ProtectedRoute';
+import { RegistrationRoute } from './auth/RegistrationRoute';
 
 export const App = () => {
 
   return (
-      <NotificationWrapper>
-        <Router>
+    <Router>
+      <AuthWrapper>
+        <NotificationWrapper>  
           <Switch>
-            <Route path={Routes.INDEX} exact component={SignupPage} />
-            <Route path={Routes.LOGIN} exact component={LoginPage}/>
-            <Route path={Routes.TIMELINE} component={MainContainer} />
-            <Route component={NotFound}/>
+            <RegistrationRoute path={Routes.INDEX} exact>
+                <SignupPage/>
+            </RegistrationRoute>
+            <RegistrationRoute path={Routes.LOGIN} exact>
+              <LoginPage/>
+            </RegistrationRoute>
+            <Route path={Routes.TIMELINE}>
+              <ProtectedRoute>
+                <MainContainer/>
+              </ProtectedRoute>
+            </Route>
+            <Route>
+              <NotFound/>
+            </Route>
           </Switch>
-        </Router>
-      </NotificationWrapper>
+        </NotificationWrapper>
+      </AuthWrapper>
+      </Router>
   )
 
 } 
