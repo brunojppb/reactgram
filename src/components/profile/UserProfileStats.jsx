@@ -48,8 +48,8 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
       });
   }, [userId]);
   
-  if (profile) {
-    return(
+  return profile
+  ? (
       <div className="profile-stats-container">
         <img src={profile.pictureUrl || placeholder} className="user-img-big" alt="profile"/>
         <div className="profile-container">
@@ -64,10 +64,6 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
           </div>
         </div>
       </div>
-    );
-  } else {
-    return(
-      <div style={{width: '100%', textAlign: 'center'}}>Carregando</div>
     )
-  }
+  : null;
 };
