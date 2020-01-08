@@ -25,6 +25,18 @@ export const getProfile = () => {
   return backend.get('/api/me');
 }
 
+export const postSignup = (email, firstName, lastName, password, passwordConfirmation) => {
+  return backend.post('/api/signup', {email, firstName, lastName, password, passwordConfirmation});
+}
+
+export const getUserProfile = (userId) => {
+  return backend.get(`/api/users/${userId}`);
+}
+
+export const getEntries = (userId, page) => {
+  return backend.get(`/api/users/${userId}/entries`, {params: {page}});
+}
+
 export const registerInterceptorForStatusCode = (callback, statusCode) => {
   const interceptor = backend.interceptors.response.use(
     response => response,

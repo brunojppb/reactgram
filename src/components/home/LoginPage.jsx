@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { HomePage } from './HomePage';
 import Routes from '../../Routes';
@@ -11,10 +11,9 @@ import { GlobalNotificationContext } from '../common/NotificationSheet';
 export const LoginPage = () => {
 
   const {showNotification} = useContext(GlobalNotificationContext);
-  const {user, onLogin} = useContext(AuthContext);
+  const {onLogin} = useContext(AuthContext);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const history = useHistory();
-  const [values, onSubmit, onChange] = useForm((values) => {
+  const [, onSubmit, onChange] = useForm((values) => {
     const {email, password} = values;
     setIsSubmitting(true);
     postLogin(email, password).then(response => {
@@ -26,12 +25,6 @@ export const LoginPage = () => {
       setIsSubmitting(false);
     });
   });
-
-  useEffect(() => {
-    if(user) {
-      history.replace(Routes.TIMELINE);
-    }
-  }, [user, history]);
 
     return (
       <HomePage>

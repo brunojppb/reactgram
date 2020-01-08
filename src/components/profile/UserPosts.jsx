@@ -1,34 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getEntries } from '../../network/backend';
 
-export const UserPosts = () => {
+export const UserPosts = ({ userId }) => {
 
-    const size = () => {
-        const width = Math.floor(Math.random() * (600 - 300) + 800);
-        const height = Math.floor(Math.random() * (400 - 100) + 500);
-        return [width, height];
-    }
+  // TODO: Refactor in a reducer
+  const [{entries, page, isLoading}, setState] = useState({entries: [], page: 1, isLoading: true});
 
-    const pics = [1,2,3,4,5,6,7,8,9,11,12,13,14,15,16].map(i => {
-        const [w, h] = size();
-        return(
-            <div className="post-thumb" key={i}>
-                <img src={`https://picsum.photos/${w}/${h}`} alt="post"/>
-                <div className="post-stats-overlay">
-                    <div className="likes">
-                        <span className="icon-heart"></span> 105
-                    </div>
-                    <div className="comments">
-                        <span className="icon-bubble"></span> 30
-                    </div>
-                </div>
-            </div>
-        );
+  const loadMore = () => {
+    setState(state => ({...state, page: state.page + 1}));
+  }
+
+  useEffect(() => {
+    setState(state => ({...state, isLoading: true}));
+    getEntries(userId, page).then(response => {
+      const {entries: newEntries} = response.data;
+      setState((state) => ({...state, isLoading: false, entries: [...state.entries, ...newEntries]}));
     })
+  }, [userId, page]);
 
-    return(
-        <div className="user-posts-container">
-            {pics}
+  return (
+    <React.Fragment>
+      <div className="user-posts-container">
+      {entries.map(entry => (
+        <div className="post-thumb" key={entry.id}>
+          <img src={entry.pictureUrl} alt="post"/>
+          <div className="post-stats-overlay">
+            <div className="likes">
+                <span className="icon-heart"></span> {entry.likes}
+            </div>
+            <div className="comments">
+                <span className="icon-bubble"></span> {entry.comments}
+            </div>
+          </div>
         </div>
-    );
+      ))}
+    </div>
+    <div className="load-more-container">
+        <button onClick={loadMore} className="btn btn-primary" disabled={isLoading}>{isLoading ? 'carregando...' : 'carregar mais'}</button>
+    </div>
+    </React.Fragment>
+    
+  );
 
 };

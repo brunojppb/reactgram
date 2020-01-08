@@ -8,6 +8,7 @@ import {Footer} from '../common/Footer';
 import { ProfileSettingsPage } from '../profile/ProfileSettingsPage';
 import {AddPostPage} from '../post/AddPostPage';
 import { PostPage } from '../post/PostPage';
+import {NotFound} from '../common/NotFound';
 import Routes from '../../Routes';
 
 export const MainContainer = () => {
@@ -22,6 +23,8 @@ export const MainContainer = () => {
                     <Route path={Routes.POST} exact component={PostPage}/>
                     <Route path={Routes.PROFILE} component={UserProfilePage}/>
                     <Route path={Routes.SETTINGS} component={ProfileSettingsPage}/>
+                    <Route path={Routes.USER_PROFILE} component={UserProfilePage}/>
+                    <Route component={NotFound} />
                 </Switch>
             </main>
             <div className="footer-wrapper">

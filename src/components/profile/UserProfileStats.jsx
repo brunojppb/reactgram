@@ -1,59 +1,73 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 import {SettingsMenuOverlay} from './SettingsMenuOverlay';
 import Routes from '../../Routes';
+import { getUserProfile } from '../../network/backend';
+import { GlobalNotificationContext } from '../common/NotificationSheet';
+import placeholder from '../../img/placeholder.svg';
 
 // TODO: Follow/Unfollow button
 const OtherProfileActions = ({isFollowing}) => {
-    const btnClass = isFollowing ? 'btn-default' : 'btn-primary';
-    const text = isFollowing ? 'deixar de seguir' : 'seguir';
-    return <button className={`btn ${btnClass}`}>{text}</button>;
+  const btnClass = isFollowing ? 'btn-default' : 'btn-primary';
+  const text = isFollowing ? 'deixar de seguir' : 'seguir';
+  return <button className={`btn ${btnClass}`}>{text}</button>;
 }
 
 const MyProfileActions = () => {
 
-    const [showingSettings, setShowingSettings] = useState(false);
-    const toggleSettings = (e) => {
-        if (e) {
-            e.preventDefault();
-        }
-        setShowingSettings(!showingSettings);
-    }
-    const settingsMenu = showingSettings ? <SettingsMenuOverlay onClose={toggleSettings}/> : null;
+  const [showingSettings, setShowingSettings] = useState(false);
+  const toggleSettings = (e) => {
+    e && e.preventDefault();
+    setShowingSettings(!showingSettings);
+  }
+  const settingsMenu = showingSettings ? <SettingsMenuOverlay onClose={toggleSettings}/> : null;
 
-    return(
-        <>
-            <Link to={Routes.SETTINGS} className="btn btn-default">Editar Perfil</Link>
-            {/* TODO: Use button instead of A tag */}
-            <button className="link"><span className="icon-settings" onClick={toggleSettings}></span></button>
-            {settingsMenu}
-        </>
-    );
+  return(
+    <React.Fragment>
+      <Link to={Routes.SETTINGS} className="btn btn-default">Editar Perfil</Link>
+      {/* TODO: Use button instead of A tag */}
+      <button className="link"><span className="icon-settings" onClick={toggleSettings}></span></button>
+      {settingsMenu}
+    </React.Fragment>
+  );
 };
 
-export const UserProfileStats = ({notMyProfile = false}) => {
+export const UserProfileStats = ({userId, isMyProfile = false }) => {
 
+  const {showNotification} = useContext(GlobalNotificationContext);
+
+  const [profile, setProfile] = useState(null);
+  useEffect(() => {
+      getUserProfile(userId).then(response => {
+        const {user: userProfile} = response.data;
+        setProfile(userProfile);
+      }, error => {
+        const {error: errorMessage} = error.response.data;
+        showNotification(errorMessage);
+      });
+  }, [userId]);
+  
+  if (profile) {
     return(
-        <div className="profile-stats-container">
-            <img src="https://picsum.photos/150" className="user-img-big" alt="profile"/>
-            <div className="profile-container">
-                <div className="profile-settings">
-                    <span>Bruno Paulino</span>
-                    {notMyProfile ? <OtherProfileActions isFollowing={true}/> : <MyProfileActions/>}
-                </div>
-                <div className="profile-stats">
-                    <span><strong>105</strong> posts</span>
-                    <span><Link to={Routes.FOLLOWERS}><strong>780</strong> seguidores</Link></span>
-                    <span><Link to={Routes.FOLLOWING}><strong>35</strong> seguindo</Link></span>
-                </div>
-                <div className="profile-description">
-                    <p>
-                        👨🏻‍💻 Software Engineer<br/>
-                        🌎 Global Citizen 
-                    </p>
-                </div>
-            </div>
+      <div className="profile-stats-container">
+        <img src={profile.pictureUrl || placeholder} className="user-img-big" alt="profile"/>
+        <div className="profile-container">
+          <div className="profile-settings">
+            <span>{`${profile.firstName} ${profile.lastName}`}</span>
+            {isMyProfile ? <MyProfileActions/> : <OtherProfileActions userId={userId} isFollowing={profile.isFollowing || false}/> }
+          </div>
+          <div className="profile-stats">
+            <span><strong>{profile.entryCount}</strong> posts</span>
+            <span><Link to={Routes.FOLLOWERS}><strong>{profile.followerCount}</strong> seguidores</Link></span>
+            <span><Link to={Routes.FOLLOWING}><strong>{profile.followingCount}</strong> seguindo</Link></span>
+          </div>
         </div>
+      </div>
     );
+  } else {
+    return(
+      <div style={{width: '100%', textAlign: 'center'}}>Carregando</div>
+    )
+  }
 };
