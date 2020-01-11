@@ -26,7 +26,6 @@ const MyProfileActions = () => {
   return(
     <React.Fragment>
       <Link to={Routes.SETTINGS} className="btn btn-default">Editar Perfil</Link>
-      {/* TODO: Use button instead of A tag */}
       <button className="link"><span className="icon-settings" onClick={toggleSettings}></span></button>
       {settingsMenu}
     </React.Fragment>

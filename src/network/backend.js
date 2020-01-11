@@ -63,6 +63,10 @@ export const deletePost = (postId) => {
   return backend.delete(`/api/entries/${postId}`);
 };
 
+export const postCreatePost = (pictureId, text) => {
+  return backend.post('/api/entries', {pictureId, text});
+}
+
 export const registerInterceptorForStatusCode = (callback, statusCode) => {
   const interceptor = backend.interceptors.response.use(
     response => response,

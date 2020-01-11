@@ -6,6 +6,10 @@
     grid-template-rows: auto auto auto;
     grid-gap: 20px;
 
+    img {
+      width: 100%;
+    }
+
     .upload-img-container {
         min-height: 500px;
         display: grid;

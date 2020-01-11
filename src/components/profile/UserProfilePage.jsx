@@ -11,7 +11,7 @@ export const UserProfilePage = () => {
 
   const {id} = useParams();
   const {user} = useContext(AuthContext);
-  const userProfileId = id || user.id;
+  const userProfileId = parseInt(id || user.id);
   const isMyProfile = userProfileId === user.id;
 
   return(
