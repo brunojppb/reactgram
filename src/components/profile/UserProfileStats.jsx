@@ -3,22 +3,27 @@ import {Link} from 'react-router-dom';
 
 import {SettingsMenuOverlay} from './SettingsMenuOverlay';
 import Routes from '../../Routes';
-import { getUserProfile } from '../../network/backend';
+import { getUserProfile, deleteUnfollowUser, postFollowUser } from '../../network/backend';
 import { GlobalNotificationContext } from '../common/NotificationSheet';
 import { UserProfileImage } from './UserProfileImage';
 
 // TODO: Follow/Unfollow button
-const OtherProfileActions = ({isFollowing}) => {
+const OtherProfileActions = ({isFollowing, isDisabled, onClick}) => {
   const btnClass = isFollowing ? 'btn-default' : 'btn-primary';
   const text = isFollowing ? 'deixar de seguir' : 'seguir';
-  return <button className={`btn ${btnClass}`}>{text}</button>;
+  return (
+    <button className={`btn ${btnClass}`} 
+            onClick={() => onClick(isFollowing)} 
+            disabled={isDisabled}>
+      {text}
+    </button>
+  );
 }
 
 const MyProfileActions = () => {
 
   const [showingSettings, setShowingSettings] = useState(false);
-  const toggleSettings = (e) => {
-    e && e.preventDefault();
+  const toggleSettings = () => {
     setShowingSettings(!showingSettings);
   }
   const settingsMenu = showingSettings ? <SettingsMenuOverlay onClose={toggleSettings}/> : null;
@@ -36,6 +41,19 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
 
   const {showNotification} = useContext(GlobalNotificationContext);
   const [profile, setProfile] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const toggleFollowing = (isFollowing) => {
+    const action = isFollowing ? deleteUnfollowUser : postFollowUser;
+    setIsLoading(true);
+    action(userId).then(response => {
+      setIsLoading(false);
+      setProfile(profile => ({...profile, isFollowing: !isFollowing}));
+    }, error => {
+      showNotification('Erro na requisição. Tente novamente.');
+      setIsLoading(false);
+    });
+  }
 
   useEffect(() => {
       getUserProfile(userId).then(response => {
@@ -54,12 +72,17 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
         <div className="profile-container">
           <div className="profile-settings">
             <span>{`${profile.firstName} ${profile.lastName}`}</span>
-            {isMyProfile ? <MyProfileActions/> : <OtherProfileActions userId={userId} isFollowing={profile.isFollowing || false}/> }
+            {isMyProfile 
+              ? <MyProfileActions/> 
+              : <OtherProfileActions userId={userId} 
+                                     isDisabled={isLoading}
+                                     onClick={toggleFollowing}
+                                     isFollowing={profile.isFollowing || false}/> }
           </div>
           <div className="profile-stats">
             <span><strong>{profile.entryCount}</strong> posts</span>
-            <span><Link to={Routes.FOLLOWERS}><strong>{profile.followerCount}</strong> seguidores</Link></span>
-            <span><Link to={Routes.FOLLOWING}><strong>{profile.followingCount}</strong> seguindo</Link></span>
+            <span><Link to={Routes.getUserFollowers(userId)}><strong>{profile.followerCount}</strong> seguidores</Link></span>
+            <span><Link to={Routes.getUserFollowing(userId)}><strong>{profile.followingCount}</strong> seguindo</Link></span>
           </div>
         </div>
       </div>

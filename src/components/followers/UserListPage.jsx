@@ -1,10 +1,12 @@
 import React from 'react';
-import {withRouter} from 'react-router';
+import {useParams, useHistory} from 'react-router';
 import {MenuOverlay} from '../common/MenuOverlay';
 import Routes from '../../Routes';
 
-let UserListPage = ({history, location, title, users}) => {
-  const onClose = () => history.push(Routes.PROFILE);
+export const UserListPage = ({title, users}) => {
+  const history = useHistory();
+  const {id} = useParams();
+  const onClose = () => history.replace(Routes.getUserProfile(id));
   return(
     <MenuOverlay onClose={onClose}>
       <div className="followers-container">
@@ -31,8 +33,6 @@ const FollowerItem = () => {
     </div>
   );
 };
-
-UserListPage = withRouter(UserListPage);
 
 // TODO: Call followers endpoint
 export const FollowersPage = ({history}) => {

@@ -65,6 +65,14 @@ export const deletePost = (postId) => {
 
 export const postCreatePost = (pictureId, text) => {
   return backend.post('/api/entries', {pictureId, text});
+};
+
+export const postFollowUser = (userId) => {
+  return backend.post(`/api/users/${userId}/follow`);
+};
+
+export const deleteUnfollowUser = (userId) => {
+  return backend.delete(`/api/users/${userId}/follow`);
 }
 
 export const registerInterceptorForStatusCode = (callback, statusCode) => {

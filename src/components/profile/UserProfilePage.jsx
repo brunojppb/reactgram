@@ -20,8 +20,8 @@ export const UserProfilePage = () => {
       <UserPosts userId={userProfileId}/>
       {/* Render Followers/Following List */}
       <Switch>
-        <Route path={Routes.FOLLOWERS} component={FollowersPage}/>
-        <Route path={Routes.FOLLOWING} component={FollowingPage}/>
+        <Route path={Routes.USER_FOLLOWERS} component={FollowersPage}/>
+        <Route path={Routes.USER_FOLLOWING} component={FollowingPage}/>
       </Switch>
     </div>
   );

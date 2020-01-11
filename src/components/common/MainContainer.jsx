@@ -21,7 +21,6 @@ export const MainContainer = () => {
                     <Route path={Routes.TIMELINE} exact component={TimelinePage}/>
                     <Route path={Routes.ADD_POST} exact component={AddPostPage}/>
                     <Route path={Routes.POST} exact component={PostPage}/>
-                    <Route path={Routes.PROFILE} component={UserProfilePage}/>
                     <Route path={Routes.SETTINGS} component={ProfileSettingsPage}/>
                     <Route path={Routes.USER_PROFILE} component={UserProfilePage}/>
                     <Route component={NotFound} />

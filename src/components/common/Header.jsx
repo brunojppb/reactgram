@@ -1,12 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import logo from '../../img/logo.svg';
 import {Link} from 'react-router-dom';
 
 import {NotificationsOverlay} from '../notifications/NotificationsOverlay';
 import Routes from '../../Routes';
+import { AuthContext } from '../auth/AuthWrapper';
 
 export const Header = () => {
 
+    const {user} = useContext(AuthContext);
     const [isNotifShown, setIsNotifShown] = useState(false);
     const toggleNotifications = (e) => {
         e.preventDefault();
@@ -33,7 +35,7 @@ export const Header = () => {
                             { isNotifShown && <NotificationsOverlay onClose={toggleNotifications}/> }
                         </li>
                         <li>
-                            <Link to={Routes.PROFILE}><span className="icon-user"/></Link>
+                            <Link to={Routes.getUserProfile(user.id)}><span className="icon-user"/></Link>
                         </li>
                     </ul>
                 </div>
