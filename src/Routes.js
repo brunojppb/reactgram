@@ -12,6 +12,10 @@ export default class Routes {
   static CHANGE_PASSWORD  = '/app/settings/pw';
   static USER_PROFILE     = '/app/users/:id';
 
+  static getUserProfile = (id) => {
+    return `/app/users/${id}`;
+  };
+
   static shouldRedirectToLogin(pathname) {
     return pathname !== Routes.LOGIN && pathname !== Routes.INDEX
   }

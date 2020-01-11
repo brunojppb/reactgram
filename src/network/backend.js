@@ -55,6 +55,10 @@ export const putUpdatePassword = (password, passwordConfirmation) => {
   return backend.put('/api/me/password', {password, passwordConfirmation});
 };
 
+export const getFeed = (page) => {
+  return backend.get('/api/feed', {params: {page}});
+};
+
 export const registerInterceptorForStatusCode = (callback, statusCode) => {
   const interceptor = backend.interceptors.response.use(
     response => response,

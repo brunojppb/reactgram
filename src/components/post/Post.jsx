@@ -1,20 +1,23 @@
 import React from 'react';
+import { UserProfileImage } from '../profile/UserProfileImage';
+import { Link } from 'react-router-dom';
+import Routes from '../../Routes';
 
-export const Post = () => {
-    const width = Math.floor(Math.random() * (1280 - 800) + 800);
-    const height = Math.floor(Math.random() * (720 - 500) + 500);
+export const Post = ({id, pictureUrl, text, likes, comments, user}) => {
     return(
         <div className="post">
             <div className="post-header">
-                <img src="https://picsum.photos/50" className="user-img-small" alt="profile"/>
-                <a href="/" className="username" >Bruno Pauluno</a>
-                <a href="/" className="post-settings"><span className="icon-params"></span></a>
+              <UserProfileImage src={user.pictureUrl} className="user-img-small"/>
+              <Link to={Routes.getUserProfile(user.id)} className="username">
+                {`${user.firstName} ${user.lastName}`}
+              </Link>
+              <a href="/app" className="post-settings"><span className="icon-params"></span></a>
             </div>
             <div className="post-content">
-                <img src={`https://picsum.photos/${width}/${height}`} alt="post"/>
+                <img src={pictureUrl} alt="post"/>
             </div>
             <PostControls/>
-            <PostReactions/>
+            <PostReactions comment={text} likes={likes} user={user}/>
         </div>
     );
 
@@ -23,23 +26,18 @@ export const Post = () => {
 export const PostControls = () => {
     return(
         <div className="post-controls">
-            <div className="controls">
-                <button className="link"><span className="icon-heart"/></button>
-                <button className="link"><span className="icon-bubble"/></button>
-                <button className="link"><span className="icon-paperplane"/></button>
-            </div>
+          <button className="link"><span className="icon-heart"/></button>
+          <button className="link"><span className="icon-bubble"/></button>
         </div>
     );
 }
 
-export const PostReactions = () => {
+export const PostReactions = ({comment, user, likes}) => {
     return(
         <div className="post-reactions">
-            <span className="likes">15,775 likes</span>
+            <span className="likes">{likes} curtidas</span>
             <div className="comments-container">
-                <Comment username="Bruno Paulino" content="It's a flying pizza aboard the space station and it is loaded with toppings! From left, inside the Zvezda service module are, Flight Engineers Anne McClain, Alexey Ovchinin and Nick Hague; Commander Oleg Kononenko and Flight Engineer David Saint-Jacques." />
-                <Comment username="Bruno Paulino" content="Muito legal isso ai viu" />
-                <Comment username="Bruno Paulino" content="WHAT?? 🤩😳🤯" />
+              <Comment username={`${user.firstName} ${user.lastName}`} content={comment} />
             </div>
         </div>
     );

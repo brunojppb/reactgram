@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {Link} from 'react-router-dom';
+
 import Routes from '../../Routes';
+import {AuthContext} from '../auth/AuthWrapper';
+import {UserProfileImage} from '../profile/UserProfileImage';
+
 
 export const ProfileSummary = () => {
+
+  const {user} = useContext(AuthContext);
 
     return(
         <div className="profile-suggestions-container">
             <Link to={Routes.PROFILE}>
-            <img src="https://picsum.photos/50" className="user-img" alt="profile"/>
+            <UserProfileImage src={user.pictureUrl} className="user-img"/>
             </Link>
             <div className="profile-details">
                 <Link to={Routes.PROFILE}>
-                    <span className="username">Bruno Paulino</span>
+                    <span className="username">{`${user.firstName} ${user.lastName}`}</span>
                 </Link>
                 <div className="profile-stats">
-                    <span>100 posts</span>
-                    <span>100 seguidores</span>
-                    <span>100 seguindo</span>
+                    <span>{user.entryCount} posts</span>
+                    <span>{user.followerCount} seguidores</span>
+                    <span>{user.followingCount} seguindo</span>
                 </div>
             </div>
         </div>
