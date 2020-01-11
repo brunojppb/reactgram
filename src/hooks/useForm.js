@@ -1,8 +1,8 @@
 import {useState} from 'react';
 
-export const useForm = (onSubmit) => {
+export const useForm = (onSubmit, initialValues = {}) => {
 
-    const [values, setValues] = useState({});
+    const [values, setValues] = useState(initialValues);
   
     const handleSubmit = (event) => {
       if (event) event.preventDefault();

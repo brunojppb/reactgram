@@ -37,6 +37,24 @@ export const getEntries = (userId, page) => {
   return backend.get(`/api/users/${userId}/entries`, {params: {page}});
 }
 
+export const putUpdateProfile = (firstName, lastName) => {
+  return backend.put('/api/me', {firstName, lastName});
+}
+
+export const postUpdateProfilePicture = (pictureId) => {
+  return backend.put('/api/me/picture', {pictureId});
+}
+
+export const postUploadImage = (file) => {
+  const formData = new FormData();
+  formData.append('file', file);
+  return backend.post('/api/upload', formData, {headers: {'content-type': 'multipart/form-data'}});
+};
+
+export const putUpdatePassword = (password, passwordConfirmation) => {
+  return backend.put('/api/me/password', {password, passwordConfirmation});
+};
+
 export const registerInterceptorForStatusCode = (callback, statusCode) => {
   const interceptor = backend.interceptors.response.use(
     response => response,

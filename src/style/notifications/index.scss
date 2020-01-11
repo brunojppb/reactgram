@@ -109,5 +109,12 @@
       left: 0;
       right: 100%;
     }
+    
+    &.is-error {
+      background-color: $dark-red;
+      .progress {
+        background-color: $light-red;
+      }
+    }
   }
 }

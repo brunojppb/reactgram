@@ -32,8 +32,8 @@ export const NotificationWrapper = ({children}) => {
     }
   })
 
-  const showNotification = (msg) => {
-    setMessageQueue(queue => [...queue, {id: id++, text: msg}])
+  const showNotification = (msg, isError = true) => {
+    setMessageQueue(queue => [...queue, {id: id++, text: msg, isError}]);
   }
 
   return(
@@ -42,7 +42,11 @@ export const NotificationWrapper = ({children}) => {
       <div className="notification-sheet">
         {transitions.map(({key, item, props: {progress, ...style}}) => {
           return (
-            <NotificationItem key={key} message={item.text} springStyle={style} progress={progress}/>
+            <NotificationItem key={key} 
+                              progress={progress}
+                              springStyle={style}
+                              message={item.text} 
+                              isError={item.isError} />
           )
         })}
       </div>
@@ -51,9 +55,10 @@ export const NotificationWrapper = ({children}) => {
 
 }
 
-const NotificationItem = ({progress, springStyle, message}) => {
+const NotificationItem = ({progress, springStyle, message, isError}) => {
+  const isErrorClass = isError ? 'is-error' : '';
   return(
-    <animated.div style={springStyle} className="notification-sheet-item">
+    <animated.div style={springStyle} className={`notification-sheet-item ${isErrorClass}`}>
       <div className="message">
         {message}
       </div>

@@ -29,6 +29,10 @@ export const AuthWrapper = ({children}) => {
     history.replace(Routes.TIMELINE);
   }
 
+  const updateUser = (user) => {
+    setState((state) => ({...state, user}));
+  }
+
   useEffect(() => {
     // interceptor here after get profile success
     // So we can redirect user to login after 401 (Unauthorized)
@@ -48,7 +52,7 @@ export const AuthWrapper = ({children}) => {
   return isLoading
     ? <Loader/>
     : (
-      <AuthContext.Provider value={{user, onLogout, onLogin}}>
+      <AuthContext.Provider value={{user, onLogout, onLogin, updateUser}}>
         {children}
       </AuthContext.Provider>
     )

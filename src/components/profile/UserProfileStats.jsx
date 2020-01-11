@@ -5,7 +5,7 @@ import {SettingsMenuOverlay} from './SettingsMenuOverlay';
 import Routes from '../../Routes';
 import { getUserProfile } from '../../network/backend';
 import { GlobalNotificationContext } from '../common/NotificationSheet';
-import placeholder from '../../img/placeholder.svg';
+import { UserProfileImage } from './UserProfileImage';
 
 // TODO: Follow/Unfollow button
 const OtherProfileActions = ({isFollowing}) => {
@@ -36,8 +36,8 @@ const MyProfileActions = () => {
 export const UserProfileStats = ({userId, isMyProfile = false }) => {
 
   const {showNotification} = useContext(GlobalNotificationContext);
-
   const [profile, setProfile] = useState(null);
+
   useEffect(() => {
       getUserProfile(userId).then(response => {
         const {user: userProfile} = response.data;
@@ -51,7 +51,7 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
   return profile
   ? (
       <div className="profile-stats-container">
-        <img src={profile.pictureUrl || placeholder} className="user-img-big" alt="profile"/>
+        <UserProfileImage src={profile.pictureUrl} className="user-img-big" />
         <div className="profile-container">
           <div className="profile-settings">
             <span>{`${profile.firstName} ${profile.lastName}`}</span>

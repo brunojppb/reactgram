@@ -43,6 +43,12 @@
   &:hover {
     cursor: pointer;
   }
+  &.upload:disabled {
+    color: $light-gray !important;
+    &:hover {
+        cursor: not-allowed;
+    }
+  }
 }
 
 .close-btn {
