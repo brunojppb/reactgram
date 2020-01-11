@@ -1,8 +1,9 @@
 import React, { useReducer, useEffect, useContext } from 'react';
 import {Post} from '../post/Post';
 import {ProfileSummary} from './ProfileSummary';
-import { getFeed } from '../../network/backend';
+import { getFeed, deletePost } from '../../network/backend';
 import {GlobalNotificationContext} from '../common/NotificationSheet';
+import { AuthContext } from '../auth/AuthWrapper';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -25,6 +26,13 @@ const reducer = (state, action) => {
         ...state,
         isLoading: false,
       };
+    case 'DELETE_POST':
+      return {
+        ...state,
+        feed: [
+          ...state.feed.filter(p => p.id !== action.postId),
+        ]
+      };
     case 'LOAD_MORE':
       return {
         ...state,
@@ -37,6 +45,7 @@ const reducer = (state, action) => {
 
 export const TimelinePage = () => {
 
+  const {user} = useContext(AuthContext);
   const {showMessage} = useContext(GlobalNotificationContext);
   const [{feed, page, isLoading}, dispatch] = useReducer(reducer, {feed: [], page: 1, isLoading: true});
 
@@ -55,10 +64,16 @@ export const TimelinePage = () => {
     dispatch({type: 'LOAD_MORE'});
   };
 
+  const onDeletePost = (postId) => {
+    deletePost(postId).then(response => {
+      dispatch({type: 'DELETE_POST', postId});
+    });
+  };
+
   return(
     <div className="timeline">
       <div className="posts">
-        {feed.map(post => <Post key={post.id} {...post}/>)}
+        {feed.map(post => <Post key={post.id} {...post} isOwnPost={post.user.id === user.id} onDelete={onDeletePost} />)}
         <div className="load-more-container">
           <button onClick={loadMore} className="btn btn-primary" disabled={isLoading}>{isLoading ? 'carregando...' : 'carregar mais'}</button>
         </div>

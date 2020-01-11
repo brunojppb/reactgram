@@ -5,6 +5,10 @@
     border: 1px solid $very-light-gray;
     display: grid;
     grid-template-rows: 1fr;
+
+    .post-settings:hover {
+      cursor: pointer;
+    }
 }
 
 .post-header {

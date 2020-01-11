@@ -59,6 +59,10 @@ export const getFeed = (page) => {
   return backend.get('/api/feed', {params: {page}});
 };
 
+export const deletePost = (postId) => {
+  return backend.delete(`/api/entries/${postId}`);
+};
+
 export const registerInterceptorForStatusCode = (callback, statusCode) => {
   const interceptor = backend.interceptors.response.use(
     response => response,

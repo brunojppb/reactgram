@@ -124,11 +124,13 @@
         font-size: 14px;
         text-align: center;
         display: block;
-        a {
+        a, button {
+            width: 100%;
             display: block;
             padding: 12px 0;
             border-bottom: 1px solid $very-light-gray;
             &:hover {
+                cursor: pointer;
                 background-color: $very-light-gray;
             }
         }

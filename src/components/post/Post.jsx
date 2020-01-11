@@ -1,25 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { UserProfileImage } from '../profile/UserProfileImage';
 import { Link } from 'react-router-dom';
 import Routes from '../../Routes';
+import { MenuOverlay } from '../common/MenuOverlay';
 
-export const Post = ({id, pictureUrl, text, likes, comments, user}) => {
-    return(
-        <div className="post">
-            <div className="post-header">
-              <UserProfileImage src={user.pictureUrl} className="user-img-small"/>
-              <Link to={Routes.getUserProfile(user.id)} className="username">
-                {`${user.firstName} ${user.lastName}`}
-              </Link>
-              <a href="/app" className="post-settings"><span className="icon-params"></span></a>
-            </div>
-            <div className="post-content">
-                <img src={pictureUrl} alt="post"/>
-            </div>
-            <PostControls/>
-            <PostReactions comment={text} likes={likes} user={user}/>
-        </div>
-    );
+export const Post = ({id, pictureUrl, text, likes, user, isOwnPost, onDelete}) => {
+
+  const [isShowingSettings, set] = useState(false);
+
+  const onSettingsClick = () => {
+    set((isShowingSettings) => !isShowingSettings);
+  };
+
+  const onDeletePost = () => {
+    onDelete(id);
+  }
+
+  const maybeSettings = isShowingSettings 
+    ? (
+      <MenuOverlay onClose={onSettingsClick} >
+        <ul className="settings-menu-overlay">
+          <li>
+            <Link to={Routes.getUserProfile(user.id)}>Ver Perfil do Usuário</Link>
+          </li>
+          <li>
+            { isOwnPost 
+              ? <button href="#" className="link" onClick={onDeletePost}>Deletar</button>
+              : null
+            }
+          </li>
+        </ul>
+      </MenuOverlay>
+    )
+    : null;
+
+  return(
+      <div className="post">
+          <div className="post-header">
+            <UserProfileImage src={user.pictureUrl} className="user-img-small"/>
+            <Link to={Routes.getUserProfile(user.id)} className="username">
+              {`${user.firstName} ${user.lastName}`}
+            </Link>
+            <button className="post-settings" onClick={onSettingsClick}>
+              <span className="icon-params"></span>
+            </button>
+          </div>
+          <div className="post-content">
+              <img src={pictureUrl} alt="post"/>
+          </div>
+          <PostControls/>
+          <PostReactions comment={text} likes={likes} user={user}/>
+          {maybeSettings}
+      </div>
+  );
 
 };
 
