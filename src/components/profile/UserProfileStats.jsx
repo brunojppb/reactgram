@@ -7,14 +7,30 @@ import { getUserProfile, deleteUnfollowUser, postFollowUser } from '../../networ
 import { GlobalNotificationContext } from '../common/NotificationSheet';
 import { UserProfileImage } from './UserProfileImage';
 
-// TODO: Follow/Unfollow button
-const OtherProfileActions = ({isFollowing, isDisabled, onClick}) => {
+export const OtherProfileActions = ({userId, isFollowing, onFollowingChange}) => {
+  
+  const [isLoading, setIsLoading] = useState(false);
+  const {showNotification} = useContext(GlobalNotificationContext);
+
   const btnClass = isFollowing ? 'btn-default' : 'btn-primary';
   const text = isFollowing ? 'deixar de seguir' : 'seguir';
+  
+  const toggleFollowing = () => {
+    const action = isFollowing ? deleteUnfollowUser : postFollowUser;
+    setIsLoading(true);
+    action(userId).then(response => {
+      setIsLoading(false);
+      onFollowingChange(!isFollowing);
+    }, error => {
+      showNotification('Erro na requisição. Tente novamente.');
+      setIsLoading(false);
+    });
+  }
+
   return (
     <button className={`btn ${btnClass}`} 
-            onClick={() => onClick(isFollowing)} 
-            disabled={isDisabled}>
+            onClick={toggleFollowing} 
+            disabled={isLoading}>
       {text}
     </button>
   );
@@ -41,19 +57,10 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
 
   const {showNotification} = useContext(GlobalNotificationContext);
   const [profile, setProfile] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
 
-  const toggleFollowing = (isFollowing) => {
-    const action = isFollowing ? deleteUnfollowUser : postFollowUser;
-    setIsLoading(true);
-    action(userId).then(response => {
-      setIsLoading(false);
-      setProfile(profile => ({...profile, isFollowing: !isFollowing}));
-    }, error => {
-      showNotification('Erro na requisição. Tente novamente.');
-      setIsLoading(false);
-    });
-  }
+  const onToggleFollowing = (isFollowing) => {
+    setProfile(profile => ({...profile, isFollowing: isFollowing}));
+  };
 
   useEffect(() => {
       getUserProfile(userId).then(response => {
@@ -75,8 +82,7 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
             {isMyProfile 
               ? <MyProfileActions/> 
               : <OtherProfileActions userId={userId} 
-                                     isDisabled={isLoading}
-                                     onClick={toggleFollowing}
+                                     onFollowingChange={onToggleFollowing}
                                      isFollowing={profile.isFollowing || false}/> }
           </div>
           <div className="profile-stats">

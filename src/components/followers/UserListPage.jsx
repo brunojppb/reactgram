@@ -3,13 +3,25 @@ import {useParams, useHistory} from 'react-router';
 import {MenuOverlay} from '../common/MenuOverlay';
 import Routes from '../../Routes';
 import { getFollowers, getFollowing } from '../../network/backend';
-import { Loader } from '../common/Loader';
+import { UserProfileImage } from '../profile/UserProfileImage';
+import { OtherProfileActions } from '../profile/UserProfileStats';
 
 export const UserListPage = ({title, fetchAction}) => {
   const history = useHistory();
   const {id} = useParams();
   const onClose = () => history.replace(Routes.getUserProfile(id));
   const [{users, isLoading}, setState] = useState({users: [], isLoading: false});
+
+  const onFollowingChange = (userId, isFollowing) => {
+    setState(state => {
+      return {
+        ...state,
+        users: state.users.map(u => {
+          return u.id === userId ? {...u, isFollowing} : u;
+        })
+      };
+    })
+  }
 
   useEffect(() => {
     setState(state => ({...state, isLoading: true}));
@@ -42,7 +54,11 @@ export const UserListPage = ({title, fetchAction}) => {
         </div>
         <div className="content">
           <div className="list">
-            { users.map(u => <FollowerItem key={u.id} {...u} />) }
+            { users.map(u => (
+              <FollowerItem key={u.id} 
+                            onFollowingChange={(isFollowing) => onFollowingChange(u.id, isFollowing)} 
+                            {...u} />)
+            ) }
             { _renderStatus() }
           </div>
         </div>
@@ -51,12 +67,12 @@ export const UserListPage = ({title, fetchAction}) => {
   );
 };
 
-const FollowerItem = () => {
+const FollowerItem = ({id, firstName, lastName, pictureUrl, isFollowing, onFollowingChange}) => {
   return(
     <div className="follower-item">
-      <img src="https://picsum.photos/50" className="user-img-small" alt="follower"/>
-      <span className="username">João Duende</span>
-      <button className="btn btn-primary">Seguir</button>
+      <UserProfileImage src={pictureUrl} className="user-img-small"/>
+      <span className="username">{firstName} {lastName}</span>
+      <OtherProfileActions userId={id} isFollowing={isFollowing} onFollowingChange={onFollowingChange}/>
     </div>
   );
 };
