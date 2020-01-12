@@ -1,12 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {useParams, useHistory} from 'react-router';
 import {MenuOverlay} from '../common/MenuOverlay';
 import Routes from '../../Routes';
+import { getFollowers, getFollowing } from '../../network/backend';
+import { Loader } from '../common/Loader';
 
-export const UserListPage = ({title, users}) => {
+export const UserListPage = ({title, fetchAction}) => {
   const history = useHistory();
   const {id} = useParams();
   const onClose = () => history.replace(Routes.getUserProfile(id));
+  const [{users, isLoading}, setState] = useState({users: [], isLoading: false});
+
+  useEffect(() => {
+    setState(state => ({...state, isLoading: true}));
+    fetchAction(id).then(response => {
+      const {users} = response.data;
+      setState(state => ({...state, users, isLoading: false}));
+    }, error => {
+      setState(state => ({...state, isLoading: false}));
+      console.error('could not load.');
+    });
+  }, [id, fetchAction]);
+
+  const _renderStatus = () => {
+    const style = {textAlign: 'center', padding: 32};
+    if (isLoading) {
+      return <div style={style}>carregando...</div>;
+    }
+    if (!isLoading && users.length === 0) {
+      return <div style={style}>Nenhum usuário encontrado :/</div>;
+    }
+    return null;
+  };
+
   return(
     <MenuOverlay onClose={onClose}>
       <div className="followers-container">
@@ -16,7 +42,8 @@ export const UserListPage = ({title, users}) => {
         </div>
         <div className="content">
           <div className="list">
-            { users.map(i => <FollowerItem key={i} />) }
+            { users.map(u => <FollowerItem key={u.id} {...u} />) }
+            { _renderStatus() }
           </div>
         </div>
       </div>
@@ -34,18 +61,16 @@ const FollowerItem = () => {
   );
 };
 
-// TODO: Call followers endpoint
-export const FollowersPage = ({history}) => {
-  const users = [...Array(5).keys()];
+export const FollowersPage = () => {
+  const fetchFollowers = useCallback(getFollowers, []);
   return(
-    <UserListPage title="Seguidores" users={users}/>
+    <UserListPage title="Seguidores" fetchAction={fetchFollowers}/>
   );
 };
 
-// TODO: Call followers endpoint
-export const FollowingPage = ({history}) => {
-  const users = [...Array(30).keys()];
+export const FollowingPage = () => {
+  const fetchFollowing = useCallback(getFollowing, []);
   return(
-    <UserListPage title="Seguindo" users={users}/>
+    <UserListPage title="Seguindo" fetchAction={fetchFollowing}/>
   );
 };

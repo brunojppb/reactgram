@@ -73,15 +73,25 @@ export const postFollowUser = (userId) => {
 
 export const deleteUnfollowUser = (userId) => {
   return backend.delete(`/api/users/${userId}/follow`);
-}
+};
 
 export const postLike = (postId) => {
   return backend.post(`/api/entries/${postId}/like`);
-}
+};
 
 export const deleteLike = (postId) => {
   return backend.delete(`/api/entries/${postId}/like`);
-}
+};
+
+export const getFollowing = (userId) => {
+  return backend.get(`/api/users/${userId}/following`);
+};
+
+export const getFollowers = (userId) => {
+  return backend.get(`/api/users/${userId}/followers`);
+};
+
+
 
 export const registerInterceptorForStatusCode = (callback, statusCode) => {
   const interceptor = backend.interceptors.response.use(

@@ -80,9 +80,19 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
                                      isFollowing={profile.isFollowing || false}/> }
           </div>
           <div className="profile-stats">
-            <span><strong>{profile.entryCount}</strong> posts</span>
-            <span><Link to={Routes.getUserFollowers(userId)}><strong>{profile.followerCount}</strong> seguidores</Link></span>
-            <span><Link to={Routes.getUserFollowing(userId)}><strong>{profile.followingCount}</strong> seguindo</Link></span>
+            <div>
+              <strong>{profile.entryCount}</strong> posts
+            </div>
+            <div>
+              <Link to={Routes.getUserFollowers(userId)}>
+                <strong>{profile.followerCount}</strong> seguidores
+              </Link>
+            </div>
+            <div>
+              <Link to={Routes.getUserFollowing(userId)}>
+                <strong>{profile.followingCount}</strong> seguindo
+              </Link>
+            </div>
           </div>
         </div>
       </div>
