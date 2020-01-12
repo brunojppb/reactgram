@@ -2,6 +2,9 @@ export default class Routes {
 
   static INDEX            = '/';
   static LOGIN            = '/login';
+  static ABOUT            = '/about';
+  static PRIVACY          = '/privacy';
+  static HELP             = '/help';
   static TIMELINE         = '/app';
   static POST             = '/app/post' // TODO: Use function to construct post route
   static ADD_POST         = '/app/upload';
