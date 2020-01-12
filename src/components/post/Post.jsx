@@ -3,13 +3,14 @@ import { UserProfileImage } from '../profile/UserProfileImage';
 import { Link } from 'react-router-dom';
 import Routes from '../../Routes';
 import { MenuOverlay } from '../common/MenuOverlay';
+import { postLike, deleteLike } from '../../network/backend';
 
-export const Post = ({id, pictureUrl, text, likes, user, isOwnPost, onDelete}) => {
+export const Post = ({id, pictureUrl, text, likes, user, isOwnPost, didLike, onDelete, onLikeChange}) => {
 
-  const [isShowingSettings, set] = useState(false);
+  const [isShowingSettings, setIsShowingSettings] = useState(false);
 
   const onSettingsClick = () => {
-    set((isShowingSettings) => !isShowingSettings);
+    setIsShowingSettings((isShowingSettings) => !isShowingSettings);
   };
 
   const onDeletePost = () => {
@@ -48,7 +49,7 @@ export const Post = ({id, pictureUrl, text, likes, user, isOwnPost, onDelete}) =
           <div className="post-content">
               <img src={pictureUrl} alt="post"/>
           </div>
-          <PostControls/>
+          <PostControls postId={id} didLike={didLike} onLikeChange={onLikeChange}/>
           <PostReactions comment={text} likes={likes} user={user}/>
           {maybeSettings}
       </div>
@@ -56,24 +57,49 @@ export const Post = ({id, pictureUrl, text, likes, user, isOwnPost, onDelete}) =
 
 };
 
-export const PostControls = () => {
-    return(
-        <div className="post-controls">
-          <button className="link"><span className="icon-heart"/></button>
-          <button className="link"><span className="icon-bubble"/></button>
-        </div>
-    );
+export const PostControls = ({postId, didLike, onLikeChange}) => {
+
+  const [isLoading, setIsLoading] = useState(false);
+  const onLikeClick = () => {
+    const action = didLike ? deleteLike : postLike;
+    setIsLoading(true);
+    action(postId).then(response => {
+      setIsLoading(false);
+      onLikeChange(postId, !didLike);
+    }, error => {
+      setIsLoading(false);
+    });
+  }
+  const color = isLoading 
+    ? 'gray' 
+    : didLike 
+      ? 'red' 
+      : '#222';
+
+  return(
+      <div className="post-controls">
+        <button className="link" onClick={onLikeClick} disabled={isLoading}>
+          <span className="icon-heart" style={{color}}/>
+        </button>
+        <button className="link">
+          <span className="icon-bubble"/>
+        </button>
+      </div>
+  );
 }
 
 export const PostReactions = ({comment, user, likes}) => {
-    return(
-        <div className="post-reactions">
-            <span className="likes">{likes} curtidas</span>
-            <div className="comments-container">
-              <Comment username={`${user.firstName} ${user.lastName}`} content={comment} />
-            </div>
-        </div>
-    );
+  
+  const likeText = likes !== 1 ? 'curtidas' : 'curtida';
+
+  return(
+    <div className="post-reactions">
+      <span className="likes">{likes} {likeText}</span>
+      <div className="comments-container">
+        <Comment username={`${user.firstName} ${user.lastName}`} content={comment} />
+      </div>
+    </div>
+  );
 };
 
 export const Comment = ({username, content}) => {

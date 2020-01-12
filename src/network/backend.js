@@ -75,6 +75,14 @@ export const deleteUnfollowUser = (userId) => {
   return backend.delete(`/api/users/${userId}/follow`);
 }
 
+export const postLike = (postId) => {
+  return backend.post(`/api/entries/${postId}/like`);
+}
+
+export const deleteLike = (postId) => {
+  return backend.delete(`/api/entries/${postId}/like`);
+}
+
 export const registerInterceptorForStatusCode = (callback, statusCode) => {
   const interceptor = backend.interceptors.response.use(
     response => response,

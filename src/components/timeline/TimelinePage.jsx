@@ -38,6 +38,20 @@ const reducer = (state, action) => {
         ...state,
         page: state.page + 1,
       };
+    case 'DID_LIKE_POST':
+      return {
+        ...state,
+        feed: state.feed.map(p => {
+          return p.id === action.postId ? {...p, likes: p.likes+1, didLike: true} : p;
+        })
+      };
+    case 'DID_DISLIKE_POST':
+      return {
+        ...state,
+        feed: state.feed.map(p => {
+          return p.id === action.postId ? {...p, likes: p.likes-1, didLike: false} : p;
+        })
+      };
     
     default: return state;
   }
@@ -69,11 +83,25 @@ export const TimelinePage = () => {
       dispatch({type: 'DELETE_POST', postId});
     });
   };
+  
+  const onLikeChange = (postId, didLike) => {
+    const dispatchType = didLike ? 'DID_LIKE_POST' : 'DID_DISLIKE_POST';
+    console.log('dispatch: ', dispatchType);
+    dispatch({type: dispatchType, postId: parseInt(postId)});
+  }
 
   return(
     <div className="timeline">
       <div className="posts">
-        {feed.map(post => <Post key={post.id} {...post} isOwnPost={post.user.id === user.id} onDelete={onDeletePost} />)}
+        {feed.map(post => {
+          return (
+            <Post key={post.id}
+                  isOwnPost={post.user.id === user.id} 
+                  onDelete={onDeletePost}
+                  onLikeChange={onLikeChange}
+                  {...post} />
+          )
+        })}
         <div className="load-more-container">
           <button onClick={loadMore} className="btn btn-primary" disabled={isLoading}>{isLoading ? 'carregando...' : 'carregar mais'}</button>
         </div>
