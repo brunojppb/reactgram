@@ -13,6 +13,7 @@ export default class Routes {
   static USER_PROFILE     = '/app/users/:id';
   static USER_FOLLOWERS   = '/app/users/:id/followers';
   static USER_FOLLOWING   = '/app/users/:id/following';
+  static USER_SEARCH      = '/app/users';
 
   static getUserProfile = (id) => {
     return `/app/users/${id}`;

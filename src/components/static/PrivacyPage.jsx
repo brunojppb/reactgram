@@ -10,10 +10,7 @@ export const PrivacyPage = () => {
         alt="privacy"
         className="static-page-img"
       />
-      <h2>
-        Política de privacidade para{" "}
-        <a href="https://reactgram.dev">Reactgram</a>
-      </h2>
+      <h2>Política de Privacidade</h2>
       <p>
         Todas as suas informações pessoais recolhidas, serão usadas para o
         ajudar a tornar a sua visita no nosso site o mais produtiva e agradável

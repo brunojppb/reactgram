@@ -10,6 +10,7 @@ import {AddPostPage} from '../post/AddPostPage';
 import { PostPage } from '../post/PostPage';
 import {NotFound} from '../common/NotFound';
 import Routes from '../../Routes';
+import { UserSearchPage } from '../profile/UserSearchPage';
 
 export const MainContainer = () => {
 
@@ -23,6 +24,7 @@ export const MainContainer = () => {
                     <Route path={Routes.POST} exact component={PostPage}/>
                     <Route path={Routes.SETTINGS} component={ProfileSettingsPage}/>
                     <Route path={Routes.USER_PROFILE} component={UserProfilePage}/>
+                    <Route path={Routes.USER_SEARCH} component={UserSearchPage}/>
                     <Route component={NotFound} />
                 </Switch>
             </main>

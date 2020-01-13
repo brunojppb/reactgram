@@ -1,0 +1,24 @@
+@import '../common/constants.scss';
+
+.user-search-container {
+
+  text-align: center;
+
+  .search-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+  
+    input[type="text"] {
+        min-width: 215px;
+        border: 1px solid $very-light-gray;
+        border-radius: 3px;
+        padding: 8px;
+        @media screen and(max-width: 600px) {
+            display: none;
+        }
+    }
+  }
+
+}
