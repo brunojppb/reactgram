@@ -17,8 +17,8 @@ export const SignupPage = () => {
     setIsSubmitting(true);
     const {email, firstName, lastName, password, passwordConfirmation} = submitValues;
     postSignup(email, firstName, lastName, password, passwordConfirmation).then(response => {
-      const {user, token} = response.data;
-      onLogin(user, token);
+      const {token} = response.data;
+      onLogin(token);
     }, error => {
       const {error: errorMessage} = error.response.data;
       showNotification(errorMessage);

@@ -20,8 +20,8 @@ export const ProfileSummary = () => {
           <span className="username">{`${user.firstName} ${user.lastName}`}</span>
         </Link>
         <div className="profile-stats">
-          <span>{user.entryCount} posts</span>
-          <span>{user.followerCount} seguidores</span>
+          <span>{user.entryCount} post{user.entryCount === 1 ? '' : 's'}</span>
+          <span>{user.followerCount} seguidor{user.followerCount === 1 ? '' : 'es'}</span>
           <span>{user.followingCount} seguindo</span>
         </div>
       </div>

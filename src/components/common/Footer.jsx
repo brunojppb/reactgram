@@ -14,7 +14,7 @@ export const Footer = () => {
                 <li><Link to={Routes.PRIVACY}>Privacidade</Link></li>
             </ul>
             <h2 className="subtitle">
-              <Link to={Routes.TIMELINE}>© {currentYear} Reactgram</Link>
+              <Link to={Routes.LOGIN}>© {currentYear} Reactgram</Link>
             </h2>
         </footer>
     )

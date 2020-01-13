@@ -18,8 +18,8 @@ export const App = () => {
 
   return (
     <Router>
-      <AuthWrapper>
-        <NotificationWrapper>  
+      <NotificationWrapper>
+        <AuthWrapper>  
           <Switch>
             <RegistrationRoute path={Routes.INDEX} exact>
                 <SignupPage/>
@@ -45,8 +45,8 @@ export const App = () => {
               <NotFound/>
             </Route>
           </Switch>
-        </NotificationWrapper>
-      </AuthWrapper>
+        </AuthWrapper>
+      </NotificationWrapper>
       </Router>
   )
 

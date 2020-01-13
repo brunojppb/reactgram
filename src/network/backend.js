@@ -13,6 +13,20 @@ backend.interceptors.request.use(config => {
   return config;
 });
 
+export const registerInterceptorForStatusCode = (callback, statusCode) => {
+  const interceptor = backend.interceptors.response.use(
+    response => response,
+    error => {
+      const {status} = error.response;
+      if (status === statusCode) {
+        console.log('unauthorized call intercepted. calling callback...');
+        callback();
+      }
+      return Promise.reject(error);
+    });
+  return () => backend.interceptors.request.eject(interceptor);
+};
+
 export const postLogin = (email, password) => {
   return backend.post('/api/signin', {email, password});
 };
@@ -91,17 +105,3 @@ export const getFollowers = (userId) => {
   return backend.get(`/api/users/${userId}/followers`);
 };
 
-
-
-export const registerInterceptorForStatusCode = (callback, statusCode) => {
-  const interceptor = backend.interceptors.response.use(
-    response => response,
-    error => {
-      const {status} = error.response;
-      if (status === statusCode) {
-        callback();
-      }
-      return Promise.reject(error);
-    });
-  return () => backend.interceptors.request.eject(interceptor);
-};

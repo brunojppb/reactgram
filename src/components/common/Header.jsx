@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import logo from '../../img/logo.svg';
 import {Link} from 'react-router-dom';
 
@@ -8,7 +8,6 @@ import { AuthContext } from '../auth/AuthWrapper';
 export const Header = () => {
 
   const {user} = useContext(AuthContext);
-  const [search, setSearch] = useState('');
 
   return(
     <header>

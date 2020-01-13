@@ -60,7 +60,7 @@ const reducer = (state, action) => {
 export const TimelinePage = () => {
 
   const {user} = useContext(AuthContext);
-  const {showMessage} = useContext(GlobalNotificationContext);
+  const {showNotification} = useContext(GlobalNotificationContext);
   const [{feed, page, isLoading}, dispatch] = useReducer(reducer, {feed: [], page: 1, isLoading: true});
 
   useEffect(() => {
@@ -70,9 +70,9 @@ export const TimelinePage = () => {
       dispatch({type: 'FETCH_FEED_SUCCESS', feed});
     }, error => {
       dispatch({type: 'FETCH_FEED_ERROR'});
-      showMessage('Erro ao carregar feed. Tente novamente.');
+      showNotification('Erro ao carregar feed. Tente novamente.');
     })
-  }, [page]);
+  }, [page, showNotification]);
 
   const loadMore = () => {
     dispatch({type: 'LOAD_MORE'});

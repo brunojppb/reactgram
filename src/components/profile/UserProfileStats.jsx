@@ -70,7 +70,7 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
         const {error: errorMessage} = error.response.data;
         showNotification(errorMessage);
       });
-  }, [userId]);
+  }, [userId, showNotification]);
   
   return profile
   ? (
@@ -87,11 +87,11 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
           </div>
           <div className="profile-stats">
             <div>
-              <strong>{profile.entryCount}</strong> posts
+              <strong>{profile.entryCount}</strong> post{profile.entryCount === 1 ? '' : 's'}
             </div>
             <div>
               <Link to={Routes.getUserFollowers(userId)}>
-                <strong>{profile.followerCount}</strong> seguidores
+                <strong>{profile.followerCount}</strong> seguidor{profile.followerCount === 1 ? 'r' : 'es'}
               </Link>
             </div>
             <div>
