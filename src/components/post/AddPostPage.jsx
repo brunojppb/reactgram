@@ -36,7 +36,16 @@ export const AddPostPage = () => {
         postUploadImage(image).then(response => {
           const {id, url} = response.data;
           set(state => ({...state, pictureId: id, pictureUrl: url, isUploading: false}));
-        })
+        }, error => {
+          const {status} = error.response;
+          if (status === 413) { // Entity too large
+            showNotification('Foto muito grande. Máximo de 5MB.');  
+          } else {
+            const {error: errorMessage} = error.response.data;
+            showNotification(errorMessage);
+          }
+          set(state => ({...state, isUploading: false}));
+        });
       }
     };
 
@@ -71,7 +80,7 @@ export const AddPostPage = () => {
           <button className="btn btn-primary" 
                   disabled={isUploading}
                   onClick={onUploadClick}>
-            Enviar uma foto (max. 2MB)
+            Enviar uma foto (max. 5MB)
           </button>
           <input type="file" 
               accept="image/jpg,image/jpeg,image/png"
