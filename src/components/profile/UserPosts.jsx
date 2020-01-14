@@ -15,7 +15,7 @@ export const UserPosts = ({ userId }) => {
     getEntries(userId, page).then(response => {
       const {entries: newEntries} = response.data;
       setState((state) => ({...state, isLoading: false, entries: [...state.entries, ...newEntries]}));
-    })
+    });
   }, [userId, page]);
 
   return (

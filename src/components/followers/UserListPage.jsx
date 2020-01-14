@@ -3,8 +3,7 @@ import {useParams, useHistory} from 'react-router';
 import {MenuOverlay} from '../common/MenuOverlay';
 import Routes from '../../Routes';
 import { getFollowers, getFollowing } from '../../network/backend';
-import { UserProfileImage } from '../profile/UserProfileImage';
-import { OtherProfileActions } from '../profile/UserProfileStats';
+import { FollowerItem } from './FollowerItem';
 
 export const UserListPage = ({title, fetchAction}) => {
   const history = useHistory();
@@ -56,7 +55,7 @@ export const UserListPage = ({title, fetchAction}) => {
           <div className="list">
             { users.map(u => (
               <FollowerItem key={u.id} 
-                            onFollowingChange={(isFollowing) => onFollowingChange(u.id, isFollowing)} 
+                            onFollowingChange={onFollowingChange} 
                             {...u} />)
             ) }
             { _renderStatus() }
@@ -64,16 +63,6 @@ export const UserListPage = ({title, fetchAction}) => {
         </div>
       </div>
     </MenuOverlay>
-  );
-};
-
-const FollowerItem = ({id, firstName, lastName, pictureUrl, isFollowing, onFollowingChange}) => {
-  return(
-    <div className="follower-item">
-      <UserProfileImage src={pictureUrl} className="user-img-small"/>
-      <span className="username">{firstName} {lastName}</span>
-      <OtherProfileActions userId={id} isFollowing={isFollowing} onFollowingChange={onFollowingChange}/>
-    </div>
   );
 };
 

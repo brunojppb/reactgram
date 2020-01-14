@@ -105,3 +105,6 @@ export const getFollowers = (userId) => {
   return backend.get(`/api/users/${userId}/followers`);
 };
 
+export const getSearch = (search) => {
+  return backend.get('/api/users', {params: {search}});
+}

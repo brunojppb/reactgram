@@ -3,38 +3,10 @@ import {Link} from 'react-router-dom';
 
 import {SettingsMenuOverlay} from './SettingsMenuOverlay';
 import Routes from '../../Routes';
-import { getUserProfile, deleteUnfollowUser, postFollowUser } from '../../network/backend';
+import { getUserProfile } from '../../network/backend';
 import { GlobalNotificationContext } from '../common/NotificationSheet';
 import { UserProfileImage } from './UserProfileImage';
-
-export const OtherProfileActions = ({userId, isFollowing, onFollowingChange}) => {
-  
-  const [isLoading, setIsLoading] = useState(false);
-  const {showNotification} = useContext(GlobalNotificationContext);
-
-  const btnClass = isFollowing ? 'btn-default' : 'btn-primary';
-  const text = isFollowing ? 'deixar de seguir' : 'seguir';
-  
-  const toggleFollowing = () => {
-    const action = isFollowing ? deleteUnfollowUser : postFollowUser;
-    setIsLoading(true);
-    action(userId).then(response => {
-      setIsLoading(false);
-      onFollowingChange(!isFollowing);
-    }, error => {
-      showNotification('Erro na requisição. Tente novamente.');
-      setIsLoading(false);
-    });
-  }
-
-  return (
-    <button className={`btn ${btnClass}`} 
-            onClick={toggleFollowing} 
-            disabled={isLoading}>
-      {text}
-    </button>
-  );
-}
+import { OtherProfileActions } from './OtherProfileActions';
 
 const MyProfileActions = () => {
 
@@ -80,7 +52,7 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
           <div className="profile-settings">
             <span>{`${profile.firstName} ${profile.lastName}`}</span>
             {isMyProfile 
-              ? <MyProfileActions/> 
+              ? <MyProfileActions/>
               : <OtherProfileActions userId={userId} 
                                      onFollowingChange={onToggleFollowing}
                                      isFollowing={profile.isFollowing || false}/> }

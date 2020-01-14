@@ -15,10 +15,16 @@
         border: 1px solid $very-light-gray;
         border-radius: 3px;
         padding: 8px;
-        @media screen and(max-width: 600px) {
-            display: none;
+        &::placeholder {
+          text-align: center;
         }
     }
+  }
+
+  .search-result-container {
+    margin: auto;
+    padding-top: 32px;
+    max-width: 400px;
   }
 
 }
