@@ -27,6 +27,11 @@
       justify-items: center;
       .mobile-app-screen {
         max-width: 350px;
+        transition: transform 0.4s ease;
+        &:hover {
+          transition: transform 0.4s ease;
+          transform: translate3d(0px, -12px, 0px) scale(1.03);
+        }
       }
       /*background-color:cadetblue;*/
       @media screen and (max-width: $max-container-width) {

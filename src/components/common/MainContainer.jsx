@@ -14,27 +14,27 @@ import { UserSearchPage } from '../profile/UserSearchPage';
 
 export const MainContainer = () => {
 
-    return(
-        <>  
-            <Header/>
-            <main className="main">
-                <Switch>
-                    <Route path={Routes.TIMELINE} exact component={TimelinePage}/>
-                    <Route path={Routes.ADD_POST} exact component={AddPostPage}/>
-                    <Route path={Routes.POST} exact component={PostPage}/>
-                    <Route path={Routes.SETTINGS} component={ProfileSettingsPage}/>
-                    {/** Using a key in the render props method, 
-                    we for the component to remount when the param changes */}
-                    <Route path={Routes.USER_PROFILE} 
-                           render={props => <UserProfilePage key={props.match.params.id} {...props}/>}/>
-                    <Route path={Routes.USER_SEARCH} component={UserSearchPage}/>
-                    <Route component={NotFound} />
-                </Switch>
-            </main>
-            <div className="footer-wrapper">
-                <Footer/>
-            </div>
-        </>
-    );
+  return(
+    <>  
+      <Header/>
+      <main className="main">
+        <Switch>
+          <Route path={Routes.TIMELINE} exact component={TimelinePage}/>
+          <Route path={Routes.ADD_POST} exact component={AddPostPage}/>
+          <Route path={Routes.POST} exact component={PostPage}/>
+          <Route path={Routes.SETTINGS} component={ProfileSettingsPage}/>
+          {/** Using a key in the render props method, 
+          we for the component to remount when the param changes */}
+          <Route path={Routes.USER_PROFILE} 
+                  render={props => <UserProfilePage key={props.match.params.userId} {...props}/>}/>
+          <Route path={Routes.USER_SEARCH} component={UserSearchPage}/>
+          <Route component={NotFound} />
+        </Switch>
+      </main>
+      <div className="footer-wrapper">
+        <Footer/>
+      </div>
+    </>
+  );
 
 };

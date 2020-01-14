@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, createContext, useCallback } from 'react'
 import {animated, useTransition} from 'react-spring'
 
 export const GlobalNotificationContext = createContext(null);
@@ -32,9 +32,9 @@ export const NotificationWrapper = ({children}) => {
     }
   })
 
-  const showNotification = (msg, isError = true) => {
+  const showNotification = useCallback((msg, isError = true) => {
     setMessageQueue(queue => [...queue, {id: id++, text: msg, isError}]);
-  }
+  }, []);
 
   return(
     <GlobalNotificationContext.Provider value={{showNotification}}>

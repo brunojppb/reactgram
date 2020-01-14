@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Routes from '../../Routes';
 
 export const FollowerItem = ({id, firstName, lastName, pictureUrl, isFollowing, onFollowingChange}) => {
-
   return(
     <div className="follower-item">
       <UserProfileImage src={pictureUrl} className="user-img-small"/>

@@ -62,7 +62,6 @@ export const TimelinePage = () => {
   const {user} = useContext(AuthContext);
   const {showNotification} = useContext(GlobalNotificationContext);
   const [{feed, page, isLoading}, dispatch] = useReducer(reducer, {feed: [], page: 1, isLoading: true});
-
   useEffect(() => {
     dispatch({type: 'FETCH_FEED'});
     getFeed(page).then(response => {

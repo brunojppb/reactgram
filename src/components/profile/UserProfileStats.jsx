@@ -63,7 +63,7 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
             </div>
             <div>
               <Link to={Routes.getUserFollowers(userId)}>
-                <strong>{profile.followerCount}</strong> seguidor{profile.followerCount === 1 ? 'r' : 'es'}
+                <strong>{profile.followerCount}</strong> seguidor{profile.followerCount === 1 ? '' : 'es'}
               </Link>
             </div>
             <div>

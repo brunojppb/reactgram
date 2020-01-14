@@ -7,8 +7,8 @@ import { FollowerItem } from './FollowerItem';
 
 export const UserListPage = ({title, fetchAction}) => {
   const history = useHistory();
-  const {id} = useParams();
-  const onClose = () => history.replace(Routes.getUserProfile(id));
+  const {userId} = useParams();
+  const onClose = () => history.replace(Routes.getUserProfile(userId));
   const [{users, isLoading}, setState] = useState({users: [], isLoading: false});
 
   const onFollowingChange = (userId, isFollowing) => {
@@ -24,14 +24,14 @@ export const UserListPage = ({title, fetchAction}) => {
 
   useEffect(() => {
     setState(state => ({...state, isLoading: true}));
-    fetchAction(id).then(response => {
+    fetchAction(userId).then(response => {
       const {users} = response.data;
       setState(state => ({...state, users, isLoading: false}));
     }, error => {
       setState(state => ({...state, isLoading: false}));
       console.error('could not load.');
     });
-  }, [id, fetchAction]);
+  }, [userId, fetchAction]);
 
   const _renderStatus = () => {
     const style = {textAlign: 'center', padding: 32};

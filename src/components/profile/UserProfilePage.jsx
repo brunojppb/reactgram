@@ -9,9 +9,9 @@ import { AuthContext } from '../auth/AuthWrapper';
 
 export const UserProfilePage = () => {
 
-  const {id} = useParams();
+  const {userId} = useParams();
   const {user} = useContext(AuthContext);
-  const userProfileId = parseInt(id || user.id);
+  const userProfileId = parseInt(userId || user.id);
   const isMyProfile = userProfileId === user.id;
 
   return(
