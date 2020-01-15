@@ -108,3 +108,7 @@ export const getFollowers = (userId) => {
 export const getSearch = (search) => {
   return backend.get('/api/users', {params: {search}});
 }
+
+export const getPost = (postId) => {
+  return backend.get(`/api/entries/${postId}`);
+};

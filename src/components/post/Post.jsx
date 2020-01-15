@@ -47,7 +47,9 @@ export const Post = ({id, pictureUrl, text, likes, user, isOwnPost, didLike, onD
             </button>
           </div>
           <div className="post-content">
-              <img src={pictureUrl} alt="post"/>
+              <Link to={Routes.getPost(id)}>
+                <img src={pictureUrl} alt="post"/>
+              </Link>
           </div>
           <PostControls postId={id} didLike={didLike} onLikeChange={onLikeChange}/>
           <PostReactions comment={text} likes={likes} user={user}/>

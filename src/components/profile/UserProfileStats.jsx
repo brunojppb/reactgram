@@ -39,8 +39,7 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
         const {user: userProfile} = response.data;
         setProfile(userProfile);
       }, error => {
-        const {error: errorMessage} = error.response.data;
-        showNotification(errorMessage);
+        showNotification('Erro ao carregar usuário.');
       });
   }, [userId, showNotification]);
   
