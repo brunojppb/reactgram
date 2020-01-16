@@ -67,7 +67,8 @@ const PostComments = ({postId, didLike, onLikeChange, text, user}) => {
       setComments(comments => [...comments, comment]);
       inputRef.current.value = '';
     }).catch(error => {
-      showNotification('Não foi possível postar comentário.');
+      const {error: message} = error.response.data;
+      showNotification(message || 'Não foi possível postar comentário.');
     }).then(() => {
       setIsPosting(false);
     });

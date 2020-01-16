@@ -113,7 +113,7 @@ export const Comment = ({username, content}) => {
     );
 };
 
-export const CommentWithPicture = ({id, text, user: {firstName, lastName, pictureUrl}}) => {
+export const CommentWithPicture = ({text, user: {firstName, lastName, pictureUrl}}) => {
     return(
         <div className="comment-picture-container">
           <UserProfileImage src={pictureUrl} className="user-img-small"/>
