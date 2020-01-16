@@ -31,12 +31,12 @@ export const PostPage = () => {
 
 const Post = ({id, pictureUrl, text, didLike, user, onLikeChange}) => {
   const {id: userId, pictureUrl: userPic, firstName, lastName} = user;
+
   return(
     <div className="post-page-container">
       <div className="post-header">
         <UserProfileImage src={userPic} className="user-img-small"/>
         <Link to={Routes.getUserProfile(userId)}>{firstName} {lastName}</Link>
-        <a href="/" className="post-settings"><span className="icon-params"></span></a>
       </div>
       <img src={pictureUrl} alt={text} />
       <PostComments postId={id} didLike={didLike} onLikeChange={onLikeChange} text={text} user={user}/>

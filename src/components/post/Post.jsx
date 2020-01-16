@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { UserProfileImage } from '../profile/UserProfileImage';
 import { Link } from 'react-router-dom';
 import Routes from '../../Routes';
-import { MenuOverlay } from '../common/MenuOverlay';
 import { postLike, deleteLike } from '../../network/backend';
+import { PostSettingsOverlay } from './PostSettingsOverlay';
 
 export const Post = ({id, pictureUrl, text, likes, user, isOwnPost, didLike, onDelete, onLikeChange}) => {
 
@@ -17,22 +17,9 @@ export const Post = ({id, pictureUrl, text, likes, user, isOwnPost, didLike, onD
     onDelete(id);
   }
 
+  
   const maybeSettings = isShowingSettings 
-    ? (
-      <MenuOverlay onClose={onSettingsClick} >
-        <ul className="settings-menu-overlay">
-          <li>
-            <Link to={Routes.getUserProfile(user.id)}>Ver Perfil do Usuário</Link>
-          </li>
-          <li>
-            { isOwnPost 
-              ? <button href="#" className="link" onClick={onDeletePost}>Deletar</button>
-              : null
-            }
-          </li>
-        </ul>
-      </MenuOverlay>
-    )
+    ? <PostSettingsOverlay postId={id} userId={user.id} onClose={onSettingsClick} onDelete={onDeletePost}/>
     : null;
 
   return(
