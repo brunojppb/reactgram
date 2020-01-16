@@ -1,22 +1,19 @@
 @import '../common/constants';
 .post-page-container {
   min-height: 300px;
+  background-color: white;
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-areas: "img content";
-
-  @media screen and (max-width: 600px) {
-    grid-template-columns: unset;
-    grid-template-rows: auto auto;
-    grid-template-areas: 
-      "img"
-      "content";
-  }
+  grid-template-rows: auto auto auto;
 
   & > img {
     width: 100%;
     height: auto;
     object-fit: cover;
+  }
+
+  .post-header {
+    border-bottom: 1px solid $very-light-gray;
+    padding: 20px;
   }
 
   .post-details-container {
@@ -30,11 +27,6 @@
     grid-template-areas:
         "header"
         "content";
-
-    .post-header {
-      border-bottom: 1px solid $very-light-gray;
-      padding: 20px;
-    }
 
     .comments-container {
       position: absolute;
@@ -56,13 +48,10 @@
       background-color: white;
     }
 
-    .add-comment {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+  }
+
+  .add-comment {
       padding: 10px;
-      background-color: white;
       border-top: 1px solid $very-light-gray;
       @media screen and (max-width: 600px) {
         position: static;
@@ -71,7 +60,5 @@
         right: unset;
       }
     }
-
-  }
 
 }

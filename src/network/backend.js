@@ -112,3 +112,11 @@ export const getSearch = (search) => {
 export const getPost = (postId) => {
   return backend.get(`/api/entries/${postId}`);
 };
+
+export const getPostComments = (postId) => {
+  return backend.get(`/api/entries/${postId}/comments`);
+};
+
+export const postComment = (postId, comment) => {
+  return backend.post(`/api/entries/${postId}/comments`, {text: comment});
+};

@@ -83,9 +83,9 @@ export const PostControls = ({postId, didLike, onLikeChange}) => {
         <button className="link" onClick={onLikeClick} disabled={isLoading}>
           <span className="icon-heart" style={{color}}/>
         </button>
-        <button className="link">
+        <Link to={Routes.getPost(postId)} className="link">
           <span className="icon-bubble"/>
-        </button>
+        </Link>
       </div>
   );
 }
@@ -113,11 +113,11 @@ export const Comment = ({username, content}) => {
     );
 };
 
-export const CommentPicture = ({username, content}) => {
+export const CommentWithPicture = ({id, text, user: {firstName, lastName, pictureUrl}}) => {
     return(
         <div className="comment-picture-container">
-            <img src="https://picsum.photos/50" className="user-img-small" alt="profile"/>
-            <Comment username={username} content={content} />
+          <UserProfileImage src={pictureUrl} className="user-img-small"/>
+          <Comment username={`${firstName} ${lastName}`} content={text}/>
         </div>
     );
 }
