@@ -85,26 +85,26 @@ export const PostReactions = ({comment, user, likes}) => {
     <div className="post-reactions">
       <span className="likes">{likes} {likeText}</span>
       <div className="comments-container">
-        <Comment username={`${user.firstName} ${user.lastName}`} content={comment} />
+        <Comment userId={user.id} username={`${user.firstName} ${user.lastName}`} content={comment} />
       </div>
     </div>
   );
 };
 
-export const Comment = ({username, content}) => {
+export const Comment = ({userId, username, content}) => {
     return(
         <div className="comment">
-            <span className="username">{username}</span>
+          <Link to={Routes.getUserProfile(userId)} className="username">{username}</Link>
             <span>{content}</span>
         </div>
     );
 };
 
-export const CommentWithPicture = ({text, user: {firstName, lastName, pictureUrl}}) => {
+export const CommentWithPicture = ({text, user: {id, firstName, lastName, pictureUrl}}) => {
     return(
         <div className="comment-picture-container">
           <UserProfileImage src={pictureUrl} className="user-img-small"/>
-          <Comment username={`${firstName} ${lastName}`} content={text}/>
+          <Comment userId={id} username={`${firstName} ${lastName}`} content={text}/>
         </div>
     );
 }
