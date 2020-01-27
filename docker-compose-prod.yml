@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+
+  reactgram_web:
+    image: brunojppb/reacgram_web:latest
+    environment:
+      - VIRTUAL_HOST=app.reactgram.dev
+      - LETSENCRYPT_HOST=app.reactgram.dev
+    networks:
+      - proxy_default
+    ports:
+      - '3000:80'
+
+# This is the network created by the nginx container proxy using compose
+# we could have a custom network created there as well.
+networks:
+  proxy_default:
+    external: true

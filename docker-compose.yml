@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+
+  reactgram_web:
+    build:
+      context: .
+    image: reactgram_web
+    ports:
+      - '3000:80'
