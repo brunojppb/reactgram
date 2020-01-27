@@ -5,6 +5,7 @@ services:
   reactgram_web:
     build:
       context: .
-    image: reactgram_web
+    image: brunojppb/reactgram_web
+    container_name: reactgram_web
     ports:
       - '3000:80'
