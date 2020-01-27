@@ -28,7 +28,7 @@ export const SignupPage = () => {
 
   return (
     <HomePage>
-      <h2 className="subtitle center">Crie sua sua conta e compartilhe suas fotos com amigos e família</h2>
+      <h2 className="subtitle center">Join Reactgram and share your pics with friends</h2>
       <form onSubmit={onSubmit}>
         <input type="email" className="form-control" name="email" placeholder="Email" onChange={onChange} required/>
         <input type="text" className="form-control" name="firstName" placeholder="Nome" onChange={onChange} required/>
@@ -37,11 +37,11 @@ export const SignupPage = () => {
         <input type="password" className="form-control" name="passwordConfirmation" placeholder="Confirme a senha" onChange={onChange} required/>
         <input type="submit" className="btn btn-primary btn-block" value="Cadastrar" disabled={isSubmitting}/>
         <p className="notice center">
-          Ao se cadastrar, você aceita nossos <a href="/">Termos.</a> Entenda como coletamos, 
-          usamos e compartilhamos seus dados em nossa <a href="/">Politica de Privacidade</a> e como usamos cookies em nossa Política de Cookies.
+          When signing up, you accept our <a href="/">terms.</a> read more about how we 
+          use your data and our <a href="/">privacy policy</a>.
         </p>
       </form>
-      <h2 className="subtitle center grid-divider">OU</h2>
+      <h2 className="subtitle center grid-divider">OR</h2>
       <Link to={Routes.LOGIN} className="btn btn-primary btn-block">Login</Link>
     </HomePage>
   );

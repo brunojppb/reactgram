@@ -10,7 +10,7 @@ export const OtherProfileActions = ({userId, isFollowing, onFollowingChange}) =>
   const {user} = useContext(AuthContext);
 
   const btnClass = isFollowing ? 'btn-default' : 'btn-primary';
-  const text = isFollowing ? 'deixar de seguir' : 'seguir';
+  const text = isFollowing ? 'Unfollow' : 'Follow';
   
   const toggleFollowing = () => {
     const action = isFollowing ? deleteUnfollowUser : postFollowUser;
@@ -19,7 +19,7 @@ export const OtherProfileActions = ({userId, isFollowing, onFollowingChange}) =>
       setIsLoading(false);
       onFollowingChange(userId, !isFollowing);
     }, error => {
-      showNotification('Erro na requisição. Tente novamente.');
+      showNotification('Network error. Please, try again.');
       setIsLoading(false);
     });
   }

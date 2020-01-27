@@ -11,9 +11,9 @@ export const SettingsMenuOverlay = ({onClose}) => {
   return(
     <MenuOverlay onClose={onClose}>
       <ul className="settings-menu-overlay">
-        <li><Link to={Routes.SETTINGS}>Editar Perfil</Link></li> 
-        <li><Link to={Routes.CHANGE_PASSWORD}>Mudar Senha</Link></li> 
-        <li><button className="link" onClick={() => onLogout()}>Sair</button></li> 
+        <li><Link to={Routes.SETTINGS}>Edit Profile</Link></li> 
+        <li><Link to={Routes.CHANGE_PASSWORD}>Change Password</Link></li> 
+        <li><button className="link" onClick={() => onLogout()}>Logout</button></li> 
       </ul>
     </MenuOverlay>
   );

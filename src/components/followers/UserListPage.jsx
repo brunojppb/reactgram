@@ -36,10 +36,10 @@ export const UserListPage = ({title, fetchAction}) => {
   const _renderStatus = () => {
     const style = {textAlign: 'center', padding: 32};
     if (isLoading) {
-      return <div style={style}>carregando...</div>;
+      return <div style={style}>loading...</div>;
     }
     if (!isLoading && users.length === 0) {
-      return <div style={style}>Nenhum usuário encontrado :/</div>;
+      return <div style={style}>No users were found.</div>;
     }
     return null;
   };
@@ -69,13 +69,13 @@ export const UserListPage = ({title, fetchAction}) => {
 export const FollowersPage = () => {
   const fetchFollowers = useCallback(getFollowers, []);
   return(
-    <UserListPage title="Seguidores" fetchAction={fetchFollowers}/>
+    <UserListPage title="Followers" fetchAction={fetchFollowers}/>
   );
 };
 
 export const FollowingPage = () => {
   const fetchFollowing = useCallback(getFollowing, []);
   return(
-    <UserListPage title="Seguindo" fetchAction={fetchFollowing}/>
+    <UserListPage title="Following" fetchAction={fetchFollowing}/>
   );
 };

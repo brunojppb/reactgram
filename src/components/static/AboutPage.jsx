@@ -6,65 +6,60 @@ export const AboutPage = () => {
   return (
     <Layout>
       <img src={about} alt="sobre" className="static-page-img" />
-      <h2>Sobre o Reactgram</h2>
+      <h2>About Reactgram</h2>
       <p>
-        React é a biblioteca frontend mais usada no mercado. Construida pelo
-        Facebook, é baseada em componentes funcionais que são atualizados
-        automaticamente quando uma mudança de estado ocorre. Desenhado de forma
-        declarativa, componentes criados em React são mais fáceis de entender e
-        de debugar.
+        React is the most popular library on the market. Built by Facebook, it is based on functional components which 
+        are updated automatically when a state update occurs. It is designed around a declarative architecture, components 
+        created in React are much easier to build, debug and maintain.
       </p>
       <p>
-        Focando em práticas reais do mercado internacional , esse curso vai te
-        ensinar a construir aplicações web super dinâmicas muito rápido.
+        Focused on real world practices, this course will teach you how to build powerful web applications that are fast and reliable.
       </p>
       <p>
-        Contruiremos juntos um <strong>clone do Instangram totalmente do zero</strong>, onde
-        iremos postar fotos, seguir e buscar por amigos, realizar login de
-        usuário, atualizar status, foto do perfil e muito mais. Durante a
-        contrução do app, aprenderemos os conceitos mais importantes do React e
-        como implementá-los.
+        We will build together an <strong>instagram clone for web totally from scratch</strong> where we will post pictures, 
+        search for friends, sign-up, sign-in, update profile, follow and unfollow people and much more. 
+        During this course we will learn the most important concepts behind React and how to implement them.
       </p>
+
+      <h2><a href="https://book.reactgram.dev" style={{textDecoration: 'underline'}}>Read the book for FREE here.</a></h2>
+
       <div style={{display: 'grid', gridTemplateColumns: 'auto auto'}}>
         <div>
-          <h3>Básico</h3>
+          <h3>Basic</h3>
           <ul>
-            <li>Ferramentas Necessárias</li>
-            <li>Hello World em React</li>
-            <li>Introdução ao JSX</li>
-            <li>Renderização de elementos</li>
-            <li>Componentes React e Props</li>
-            <li>Ciclo de vida do componente</li>
-            <li>Gerenciamento de Estado</li>
-            <li>State e Props</li>
-            <li>Renderização condicional</li>
-            <li>Eventos em React</li>
-            <li>Renderizando listas</li>
-            <li>Usando forms</li>
+            <li>Basic Tooling</li>
+            <li>Hello World in React</li>
+            <li>Intro do JSX</li>
+            <li>Rendering Elements</li>
+            <li>React Components and Props</li>
+            <li>Component Lifecycle</li>
+            <li>State Management</li>
+            <li>State and Props</li>
+            <li>Conditional Rendering</li>
+            <li>Events in React</li>
+            <li>Rendering Lists</li>
+            <li>Using Forms</li>
           </ul>
         </div>
 
         <div>
-          <h3>Avançado</h3>
+          <h3>Advanced</h3>
           <ul>
-            <li>Componentes Containers</li>
-            <li>Gerenciamento de Rotas</li>
-            <li>Comunicação com API JSON</li>
-            <li>Autenticação de usuário</li>
-            <li>Componentes Funcionais</li>
-            <li>High Order Components</li>
+            <li>Container Components</li>
+            <li>Managing Routes</li>
+            <li>Calling JSON APIs</li>
+            <li>User Authentication</li>
+            <li>Functional Components</li>
+            <li>High-Order Components</li>
             <li>Context API</li>
             <li>React Hooks</li>
-            <li>usando CSS e SCSS</li>
-            <li>Animações com React Spring</li>
-            <li>Build para Produção</li>
-            <li>Deploy em Serviços Cloud</li>
+            <li>using CSS and SCSS</li>
+            <li>Animations with React-Spring</li>
+            <li>Production Build</li>
+            <li>Deploy to the Cloud</li>
           </ul>
         </div>
       </div>
-      <p>
-        Ao concluir esse curso, você será capaz de construir aplicações React completas, utilizando os conceitos mais modernos e melhores práticas.
-      </p>
     </Layout>
   );
 };

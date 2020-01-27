@@ -33,11 +33,11 @@ export const UserSearchPage = () => {
 
   return(
     <div className="user-search-container">
-      <h1>Buscar</h1>
+      <h1>Search</h1>
       <div className="search-container">
         <form onSubmit={onSubmit}>
-          <input type="text" placeholder="Busque seus amigos aqui..." name="search" onChange={onChange}/>
-          <input type="submit" value="buscar" className="btn btn-primary" disabled={isLoading} style={{marginLeft: 8}}/>
+          <input type="text" placeholder="Search for friends" name="search" onChange={onChange}/>
+          <input type="submit" value="search" className="btn btn-primary" disabled={isLoading} style={{marginLeft: 8}}/>
         </form>
       </div>
       <div className="search-result-container">

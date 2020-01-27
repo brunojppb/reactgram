@@ -9,9 +9,10 @@ export const Footer = () => {
     return (
         <footer>
             <ul>
-                <li><Link to={Routes.ABOUT}>Sobre</Link></li>
-                <li><Link to={Routes.HELP}>Ajuda</Link></li>
-                <li><Link to={Routes.PRIVACY}>Privacidade</Link></li>
+                <li><Link to={Routes.ABOUT}>About</Link></li>
+                <li><Link to={Routes.HELP}>Help</Link></li>
+                <li><Link to={Routes.PRIVACY}>Privacy</Link></li>
+                <li><a href="https://book.reactgram.dev/">Read the Book</a></li>
             </ul>
             <h2 className="subtitle">
               <Link to={Routes.LOGIN}>© {currentYear} Reactgram</Link>

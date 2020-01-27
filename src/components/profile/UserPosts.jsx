@@ -19,7 +19,7 @@ export const UserPosts = ({ userId }) => {
       const {entries: newEntries} = response.data;
       setState((state) => ({...state, isLoading: false, entries: [...state.entries, ...newEntries]}));
     }).catch(error => {
-      showNotification('Erro ao carregar comentários.');
+      showNotification('Error while loading comments.');
       setState(state => ({...state, isLoading: false}));
     });
   }, [userId, page, showNotification]);
@@ -44,7 +44,7 @@ export const UserPosts = ({ userId }) => {
         ))}
     </div>
     <div className="load-more-container">
-        <button onClick={loadMore} className="btn btn-primary" disabled={isLoading}>{isLoading ? 'carregando...' : 'carregar mais'}</button>
+        <button onClick={loadMore} className="btn btn-primary" disabled={isLoading}>{isLoading ? 'Loading...' : 'Load more'}</button>
     </div>
     </React.Fragment>
     

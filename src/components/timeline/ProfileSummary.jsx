@@ -21,8 +21,8 @@ export const ProfileSummary = () => {
         </Link>
         <div className="profile-stats">
           <span>{user.entryCount} post{user.entryCount === 1 ? '' : 's'}</span>
-          <span>{user.followerCount} seguidor{user.followerCount === 1 ? '' : 'es'}</span>
-          <span>{user.followingCount} seguindo</span>
+          <span>{user.followerCount} follower{user.followerCount === 1 ? '' : 's'}</span>
+          <span>{user.followingCount} following</span>
         </div>
       </div>
     </div>

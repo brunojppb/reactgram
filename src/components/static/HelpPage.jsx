@@ -9,7 +9,7 @@ export const HelpPage = () => {
       <img src={help} alt="ajuda" className="static-page-img"/>
       <h2>Ajuda</h2>
       <p>
-        Para obter suporte, envie um email para <a href="mailto:help@reactgram.dev" style={{fontWeight: 'bold'}}>help@rectgram.dev</a>
+        To get support, reach to <a href="https://twitter.com/bpaulino0" style={{fontWeight: 'bold'}}>Bruno Paulino</a> on Twitter.
       </p>
     </Layout>
   );

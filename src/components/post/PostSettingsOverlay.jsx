@@ -13,11 +13,11 @@ export const PostSettingsOverlay = ({postId, userId, onClose, onDelete}) => {
     <MenuOverlay onClose={onClose} >
     <ul className="settings-menu-overlay">
       <li>
-        <Link to={Routes.getUserProfile(userId)}>Ver Perfil do Usuário</Link>
+        <Link to={Routes.getUserProfile(userId)}>Go to user profile</Link>
       </li>
       <li>
         { isOwnPost 
-          ? <button href="#" className="link" onClick={onDelete}>Deletar</button>
+          ? <button href="#" className="link" onClick={onDelete}>Delete</button>
           : null
         }
       </li>

@@ -69,7 +69,7 @@ export const TimelinePage = () => {
       dispatch({type: 'FETCH_FEED_SUCCESS', feed});
     }, error => {
       dispatch({type: 'FETCH_FEED_ERROR'});
-      showNotification('Erro ao carregar feed. Tente novamente.');
+      showNotification('Error while loading feed. Please, try again.');
     })
   }, [page, showNotification]);
 
@@ -102,7 +102,7 @@ export const TimelinePage = () => {
           )
         })}
         <div className="load-more-container">
-          <button onClick={loadMore} className="btn btn-primary" disabled={isLoading}>{isLoading ? 'carregando...' : 'carregar mais'}</button>
+          <button onClick={loadMore} className="btn btn-primary" disabled={isLoading}>{isLoading ? 'loading...' : 'Load more'}</button>
         </div>
       </div>
       <ProfileSummary/>

@@ -3,10 +3,12 @@ import { AuthContext } from '../auth/AuthWrapper';
 import { UserProfileImage } from './UserProfileImage';
 import { useForm } from '../../hooks/useForm';
 import { putUpdateProfile, postUploadImage, postUpdateProfilePicture } from '../../network/backend';
+import { GlobalNotificationContext } from '../common/NotificationSheet';
 
 export const EditProfilePage = () => {
 
   const {user, updateUser} = useContext(AuthContext);
+  const {showNotification} = useContext(GlobalNotificationContext);
   const [isUpdating, setIsUpdating] = useState(false);
   const inputRef = useRef(null);
 
@@ -18,6 +20,7 @@ export const EditProfilePage = () => {
       const {user: updatedUser} = response.data;
       updateUser(updatedUser);
       setIsUpdating(false);
+      showNotification('Profile updated', false);
     });
   }, {firstName: user.firstName, lastName: user.lastName});
 
@@ -31,6 +34,7 @@ export const EditProfilePage = () => {
         const {data: {id: pictureId}} = await postUploadImage(image);
         const {data: {user}} = await postUpdateProfilePicture(pictureId);
         updateUser(user);
+        showNotification('Picture updated', false);
       } catch (e) {
         console.error('could not update user profile', e);
       } finally {
@@ -47,7 +51,7 @@ export const EditProfilePage = () => {
           <span>{`${user.firstName} ${user.lastName}`}</span>
           <button className="link upload" 
                   disabled={isUpdating}
-                  onClick={() => inputRef.current.click()}>Atualizar foto</button>
+                  onClick={() => inputRef.current.click()}>Update Picture</button>
           <input type="file" 
                     accept="image/jpg,image/jpeg,image/png"
                     style={{display: "none"}} 
@@ -57,16 +61,16 @@ export const EditProfilePage = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="firstName">Nome</label>
-          <input id="firstName"name="firstName" placeholder="Nome" className="form-control" onChange={handleChange} required defaultValue={user.firstName}/>
+          <input id="firstName"name="firstName" placeholder="First Name" className="form-control" onChange={handleChange} required defaultValue={user.firstName}/>
         </div>
         <div className="form-group">
         <label htmlFor="lastName">Sobrenome</label>
-          <input id="lastName" name="lastName" placeholder="Sobrenome" className="form-control" onChange={handleChange} required defaultValue={user.lastName}/>
+          <input id="lastName" name="lastName" placeholder="Last Name" className="form-control" onChange={handleChange} required defaultValue={user.lastName}/>
         </div>
         <div className="form-group">
           <div></div>
           <div>
-            <input type="submit" value="salvar" className="btn btn-primary" disabled={isUpdating}/>
+            <input type="submit" value="Save" className="btn btn-primary" disabled={isUpdating}/>
           </div>
         </div>
       </form>

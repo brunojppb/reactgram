@@ -39,7 +39,7 @@ export const AddPostPage = () => {
         }, error => {
           const {status} = error.response;
           if (status === 413) { // Entity too large
-            showNotification('Foto muito grande. Máximo de 5MB.');  
+            showNotification('Picture is too large. Max. of 5MB.');  
           } else {
             const {error: errorMessage} = error.response.data;
             showNotification(errorMessage);
@@ -57,19 +57,19 @@ export const AddPostPage = () => {
     const onSave = () => {
       console.log('on Upload');
       if (title.length < 3) {
-        showNotification('Você precisa incluir uma legenda com mais de 2 caracteres.');
+        showNotification('You need to write a litle. Cmon, a picture without text is boring.');
         return;
       }
       if (pictureId === null) {
-        showNotification('Um post sem foto é triste 😞 Faça um upload.');
+        showNotification('A post without a picture is sad😞 Please, upload a picture.');
       }
 
       set((state) => ({...state, isUploading: true}));
       postCreatePost(pictureId, title).then(response => {
-        showNotification('Post criado com sucesso 🎉', false);
+        showNotification('Post created! 🎉', false);
         history.push(Routes.TIMELINE);
       }, error => {
-        showNotification('Um erro ocorreu. Tente novamente.');
+        showNotification('Something went wrong. Please try again.');
         set(state => ({...state, isUploading: false}));
       });
     };
@@ -80,7 +80,7 @@ export const AddPostPage = () => {
           <button className="btn btn-primary" 
                   disabled={isUploading}
                   onClick={onUploadClick}>
-            Enviar uma foto (max. 5MB)
+            Upload a picture (max. 5MB)
           </button>
           <input type="file" 
               accept="image/jpg,image/jpeg,image/png"
@@ -98,12 +98,12 @@ export const AddPostPage = () => {
             : _renderUploadForm()
           }
           <div className="post-title-container">
-              <textarea placeholder="Adicione uma legenda" 
+              <textarea placeholder="Add some text" 
                       maxLength="144"
                       onChange={onTitleChange}/>
-              <span style={{backgroundColor: counterColor}} className="title-counter">{charsLeft} caracteres</span>
+              <span style={{backgroundColor: counterColor}} className="title-counter">{charsLeft} characters</span>
           </div>
-          <button className="btn btn-primary save-post" onClick={onSave} disabled={isUploading}>Postar</button>
+          <button className="btn btn-primary save-post" onClick={onSave} disabled={isUploading}>Send</button>
         </div>
     );
 };

@@ -25,7 +25,7 @@ export const PostPage = () => {
 
   return post
   ? <Post {...post} onLikeChange={onLikeChange}/>
-  : <h1>Carregando...</h1>;
+  : <h1>Loading...</h1>;
 
 };
 
@@ -56,7 +56,7 @@ const PostComments = ({postId, didLike, onLikeChange, text, user}) => {
       const {comments} = response.data;
       setComments(prevComments => [...prevComments, ...comments]);
     }).catch(() => {
-      showNotification('Erro ao carregar comentários');
+      showNotification('Error while loading comments. Please, try again.');
     });
   }, [postId, showNotification]);
 
@@ -68,7 +68,7 @@ const PostComments = ({postId, didLike, onLikeChange, text, user}) => {
       inputRef.current.value = '';
     }).catch(error => {
       const {error: message} = error.response.data;
-      showNotification(message || 'Não foi possível postar comentário.');
+      showNotification(message || 'Could not post comment.');
     }).then(() => {
       setIsPosting(false);
     });
@@ -79,7 +79,7 @@ const PostComments = ({postId, didLike, onLikeChange, text, user}) => {
     if (key === 'Enter') {
       const value = event.target.value || '';
       if (value === '') {
-        showNotification('Comentário não pode ser vazio.');
+        showNotification('Comment cannot be blank.');
       } else {
         createComment(value);
       }
@@ -98,7 +98,7 @@ const PostComments = ({postId, didLike, onLikeChange, text, user}) => {
       <PostControls postId={postId} didLike={didLike} onLikeChange={onLikeChange}/>
       <input type="text" 
               className="form-control" 
-              placeholder="adicione um comentário" 
+              placeholder="add a comment" 
               name="comment" 
               ref={inputRef} 
               onKeyPress={onKeyPress} disabled={isPosting}/>

@@ -18,7 +18,7 @@ const MyProfileActions = () => {
 
   return(
     <React.Fragment>
-      <Link to={Routes.SETTINGS} className="btn btn-default">Editar Perfil</Link>
+      <Link to={Routes.SETTINGS} className="btn btn-default">Edit Profile</Link>
       <button className="link"><span className="icon-settings" onClick={toggleSettings}></span></button>
       {settingsMenu}
     </React.Fragment>
@@ -39,7 +39,7 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
         const {user: userProfile} = response.data;
         setProfile(userProfile);
       }, error => {
-        showNotification('Erro ao carregar usuário.');
+        showNotification('Error while loading user.');
       });
   }, [userId, showNotification]);
   
@@ -62,12 +62,12 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
             </div>
             <div>
               <Link to={Routes.getUserFollowers(userId)}>
-                <strong>{profile.followerCount}</strong> seguidor{profile.followerCount === 1 ? '' : 'es'}
+                <strong>{profile.followerCount}</strong> follower{profile.followerCount === 1 ? '' : 's'}
               </Link>
             </div>
             <div>
               <Link to={Routes.getUserFollowing(userId)}>
-                <strong>{profile.followingCount}</strong> seguindo
+                <strong>{profile.followingCount}</strong> following
               </Link>
             </div>
           </div>
