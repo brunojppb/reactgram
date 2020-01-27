@@ -37,8 +37,8 @@ export const SignupPage = () => {
         <input type="password" className="form-control" name="passwordConfirmation" placeholder="Confirme a senha" onChange={onChange} required/>
         <input type="submit" className="btn btn-primary btn-block" value="Cadastrar" disabled={isSubmitting}/>
         <p className="notice center">
-          When signing up, you accept our <a href="/">terms.</a> read more about how we 
-          use your data and our <a href="/">privacy policy</a>.
+          When signing up, you accept our <Link to={Routes.PRIVACY}>terms.</Link> read more about how we 
+          use your data and our <Link to={Routes.PRIVACY}>privacy policy.</Link>
         </p>
       </form>
       <h2 className="subtitle center grid-divider">OR</h2>

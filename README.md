@@ -2,7 +2,7 @@
 
 ### An "instagram-like" app created with React
 
-React is the most popular library on the market. Built by Facebook, it is based on functional components which are updated automatically when a state update occurs. Designed around a declarative architecture, components created in React are much easier to build, debug and maintain.  
+React is the most popular frontend library on the market. Built by Facebook, it is based on functional components which are updated automatically when a state update occurs. Designed around a declarative architecture, components created in React are much easier to build, debug and maintain.  
   
 Focused on real world practices, this course will teach you how to build powerful web applications using the most modern tools on the market.  
   
