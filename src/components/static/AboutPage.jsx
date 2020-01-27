@@ -9,7 +9,7 @@ export const AboutPage = () => {
       <h2>About Reactgram</h2>
       <p>
         React is the most popular library on the market. Built by Facebook, it is based on functional components which 
-        are updated automatically when a state update occurs. It is designed around a declarative architecture, components 
+        are updated automatically when a state update occurs. Designed around a declarative architecture, components 
         created in React are much easier to build, debug and maintain.
       </p>
       <p>
