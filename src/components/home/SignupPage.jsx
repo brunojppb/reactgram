@@ -31,11 +31,11 @@ export const SignupPage = () => {
       <h2 className="subtitle center">Join Reactgram and share your pics with friends</h2>
       <form onSubmit={onSubmit}>
         <input type="email" className="form-control" name="email" placeholder="Email" onChange={onChange} required/>
-        <input type="text" className="form-control" name="firstName" placeholder="Nome" onChange={onChange} required/>
-        <input type="text" className="form-control" name="lastName" placeholder="Sobrenome" onChange={onChange} required/>
-        <input type="password" className="form-control" name="password" placeholder="Senha" onChange={onChange} required/>
-        <input type="password" className="form-control" name="passwordConfirmation" placeholder="Confirme a senha" onChange={onChange} required/>
-        <input type="submit" className="btn btn-primary btn-block" value="Cadastrar" disabled={isSubmitting}/>
+        <input type="text" className="form-control" name="firstName" placeholder="First Name" onChange={onChange} required/>
+        <input type="text" className="form-control" name="lastName" placeholder="Last name" onChange={onChange} required/>
+        <input type="password" className="form-control" name="password" placeholder="Password" onChange={onChange} required/>
+        <input type="password" className="form-control" name="passwordConfirmation" placeholder="Password confirmation" onChange={onChange} required/>
+        <input type="submit" className="btn btn-primary btn-block" value="Signup" disabled={isSubmitting}/>
         <p className="notice center">
           When signing up, you accept our <Link to={Routes.PRIVACY}>terms.</Link> read more about how we 
           use your data and our <Link to={Routes.PRIVACY}>privacy policy.</Link>
