@@ -82,12 +82,7 @@ export const AddPostPage = () => {
                   onClick={onUploadClick}>
             Upload a picture (max. 5MB)
           </button>
-          <input type="file" 
-              accept="image/jpg,image/jpeg,image/png"
-              style={{display: "none"}} 
-              onChange={onFileChange}
-              ref={inputRef}/>
-      </div>
+        </div>
       );
     };
 
@@ -97,6 +92,11 @@ export const AddPostPage = () => {
             ? <img src={pictureUrl} alt="uploaded to post"/>
             : _renderUploadForm()
           }
+          <input type="file" 
+              accept="image/jpg,image/jpeg,image/png"
+              style={{display: "none"}} 
+              onChange={onFileChange}
+              ref={inputRef}/>
           <div className="post-title-container">
               <textarea placeholder="Add some text" 
                       maxLength="144"
