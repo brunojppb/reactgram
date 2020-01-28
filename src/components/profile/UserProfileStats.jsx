@@ -30,7 +30,7 @@ export const UserProfileStats = ({userId, isMyProfile = false }) => {
   const {showNotification} = useContext(GlobalNotificationContext);
   const [profile, setProfile] = useState(null);
 
-  const onToggleFollowing = (isFollowing) => {
+  const onToggleFollowing = (userId, isFollowing) => {
     setProfile(profile => ({...profile, isFollowing: isFollowing}));
   };
 
