@@ -3,7 +3,7 @@ version: '3.7'
 services:
 
   reactgram_web:
-    image: brunojppb/reacgram_web:latest
+    image: brunojppb/reactgram_web:latest
     environment:
       - VIRTUAL_HOST=app.reactgram.dev
       - LETSENCRYPT_HOST=app.reactgram.dev
