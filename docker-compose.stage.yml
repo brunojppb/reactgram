@@ -11,6 +11,7 @@ services:
       - proxy_default
     ports:
       - '3000:80'
+    restart: always
 
 # This is the network created by the nginx container proxy using compose
 # we could have a custom network created there as well.
