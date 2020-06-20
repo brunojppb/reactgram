@@ -3,26 +3,26 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import {MainContainer} from './common/MainContainer';
 import Routes from '../Routes';
-import { NotFound } from './common/NotFound';
-import { SignupPage } from './home/SignupPage';
-import { LoginPage } from './home/LoginPage';
-import { NotificationWrapper } from './common/NotificationSheet';
-import { AuthWrapper } from './auth/AuthWrapper';
-import { ProtectedRoute } from './auth/ProtectedRoute';
-import { RegistrationRoute } from './auth/RegistrationRoute';
-import { AboutPage } from './static/AboutPage';
-import { PrivacyPage } from './static/PrivacyPage';
-import { HelpPage } from './static/HelpPage';
+import {NotFound} from './common/NotFound';
+import {SignupPage} from './home/SignupPage';
+import {LoginPage} from './home/LoginPage';
+import {NotificationWrapper} from './common/NotificationSheet';
+import {AuthWrapper} from './auth/AuthWrapper';
+import {ProtectedRoute} from './auth/ProtectedRoute';
+import {RegistrationRoute} from './auth/RegistrationRoute';
+import {AboutPage} from './static/AboutPage';
+import {PrivacyPage} from './static/PrivacyPage';
+import {HelpPage} from './static/HelpPage';
 
 export const App = () => {
 
   return (
-    <Router>
-      <NotificationWrapper>
-        <AuthWrapper>  
+    <NotificationWrapper>
+      <AuthWrapper>
+        <Router>
           <Switch>
             <RegistrationRoute path={Routes.INDEX} exact>
-                <SignupPage/>
+              <SignupPage/>
             </RegistrationRoute>
             <RegistrationRoute path={Routes.LOGIN} exact>
               <LoginPage/>
@@ -45,9 +45,9 @@ export const App = () => {
               <NotFound/>
             </Route>
           </Switch>
-        </AuthWrapper>
-      </NotificationWrapper>
-      </Router>
+        </Router>
+      </AuthWrapper>
+    </NotificationWrapper>
   )
 
 } 

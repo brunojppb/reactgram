@@ -4,6 +4,8 @@ import {ProfileSummary} from './ProfileSummary';
 import { getFeed, deletePost } from '../../network/backend';
 import {GlobalNotificationContext} from '../common/NotificationSheet';
 import { AuthContext } from '../auth/AuthWrapper';
+import {Link} from "react-router-dom";
+import Routes from "../../Routes";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -101,9 +103,23 @@ export const TimelinePage = () => {
                   {...post} />
           )
         })}
-        <div className="load-more-container">
-          <button onClick={loadMore} className="btn btn-primary" disabled={isLoading}>{isLoading ? 'loading...' : 'Load more'}</button>
-        </div>
+
+        {
+          feed.length === 0 && !isLoading && (
+            <div className="empty-feed">
+              <p>Looks like you don't follow anyone or you didn't post any pictures yet.</p>
+              <p><Link to={Routes.ADD_POST}>Post a picture</Link> or <Link to={Routes.USER_SEARCH}>find friends</Link></p>
+            </div>
+          )
+        }
+
+        {
+          feed.length > 0 && (
+            <div className="load-more-container">
+              <button onClick={loadMore} className="btn btn-primary" disabled={isLoading}>{isLoading ? 'loading...' : 'Load more'}</button>
+            </div>
+          )
+        }
       </div>
       <ProfileSummary/>
     </div>

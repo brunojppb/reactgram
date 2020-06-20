@@ -9,6 +9,7 @@ import {UserProfileImage} from '../profile/UserProfileImage';
 export const ProfileSummary = () => {
 
   const {user} = useContext(AuthContext);
+  const {entryCount, followerCount, followingCount} = user;
 
   return(
     <div className="profile-suggestions-container">
@@ -20,9 +21,9 @@ export const ProfileSummary = () => {
           <span className="username">{`${user.firstName} ${user.lastName}`}</span>
         </Link>
         <div className="profile-stats">
-          <span>{user.entryCount} post{user.entryCount === 1 ? '' : 's'}</span>
-          <span>{user.followerCount} follower{user.followerCount === 1 ? '' : 's'}</span>
-          <span>{user.followingCount} following</span>
+          <span>{entryCount} post{entryCount === 1 ? '' : 's'}</span>
+          <span>{followerCount} follower{followerCount === 1 ? '' : 's'}</span>
+          <span>{followingCount} following</span>
         </div>
       </div>
     </div>
