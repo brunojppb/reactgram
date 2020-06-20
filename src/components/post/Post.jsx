@@ -29,13 +29,13 @@ export const Post = ({id, pictureUrl, text, likes, user, isOwnPost, didLike, onD
             <Link to={Routes.getUserProfile(user.id)} className="username">
               {`${user.firstName} ${user.lastName}`}
             </Link>
-            <button className="post-settings" onClick={onSettingsClick}>
-              <span className="icon-params"></span>
+            <button className="post-settings" onClick={onSettingsClick} aria-label="post settings">
+              <span className="icon-params"/>
             </button>
           </div>
           <div className="post-content">
               <Link to={Routes.getPost(id)}>
-                <img src={pictureUrl} alt="post"/>
+                <img src={pictureUrl} alt="post" loading="lazy"/>
               </Link>
           </div>
           <PostControls postId={id} didLike={didLike} onLikeChange={onLikeChange}/>
