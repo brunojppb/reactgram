@@ -1,6 +1,6 @@
 import React from 'react';
 import {Footer} from '../common/Footer';
-import phones from '../../img/mobile_phones.png';
+import phones from '../../img/mobile-phones.png';
 import { Link } from 'react-router-dom';
 import Routes from '../../Routes';
 

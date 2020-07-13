@@ -5,7 +5,7 @@ import { Layout } from "./Layout";
 export const AboutPage = () => {
   return (
     <Layout>
-      <img src={about} alt="sobre" className="static-page-img" />
+      <img src={about} alt="about" className="static-page-img" />
       <h2>About Reactgram</h2>
       <p>
         React is the most popular frontend library on the market. Built by Facebook, it is based on functional components which 
