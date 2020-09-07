@@ -51,6 +51,3 @@ jobs:
             docker-compose pull reactgram_web
             docker-compose up -d
           ENDSSH
-
-
-

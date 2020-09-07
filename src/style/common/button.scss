@@ -1,43 +1,42 @@
-@import "./constants";
+@import './constants';
 
 .btn {
-    display: inline-block;
-    border: none;
-    text-align: center;
-    margin: 0;
-    text-decoration: none;
-    cursor: pointer;
-    padding: 5px 9px;
-    font-weight: 600;
-    font-size: 14px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border-radius: 4px;
-    border: 1px solid;
+  display: inline-block;
+  border: none;
+  text-align: center;
+  margin: 0;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 5px 9px;
+  font-weight: 600;
+  font-size: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 4px;
+  border: 1px solid;
 
-    &.btn-block {
-        width: 100%;
-        display: block;
+  &.btn-block {
+    width: 100%;
+    display: block;
+  }
+
+  &:disabled {
+    border-color: white;
+    background-color: $very-light-gray;
+    color: $light-gray;
+    &:hover {
+      cursor: not-allowed;
     }
-
-    &:disabled {
-        border-color: white;
-        background-color: $very-light-gray;
-        color: $light-gray;
-        &:hover {
-            cursor: not-allowed;
-        }
-    }
-
+  }
 }
 
 .btn-default {
-    background-color: white;
-    border-color: $very-light-gray;
+  background-color: white;
+  border-color: $very-light-gray;
 }
 
 .btn-primary {
-    border-color: #3897f0;
-    background-color: $light-blue;
-    color: #ffffff;
+  border-color: #3897f0;
+  background-color: $light-blue;
+  color: #ffffff;
 }

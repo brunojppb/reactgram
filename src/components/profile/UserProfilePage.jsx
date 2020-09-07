@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Switch, Route, useParams } from 'react-router-dom'
 
 import { UserProfileStats } from './UserProfileStats'

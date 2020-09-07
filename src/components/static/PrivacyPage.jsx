@@ -1,6 +1,6 @@
-import React from "react";
-import { Layout } from "./Layout";
-import privacy from "../../img/privacy.svg";
+import React from 'react'
+import { Layout } from './Layout'
+import privacy from '../../img/privacy.svg'
 
 export const PrivacyPage = () => {
   return (
@@ -95,5 +95,5 @@ export const PrivacyPage = () => {
         to its Terms and Conditions.
       </p>
     </Layout>
-  );
-};
+  )
+}

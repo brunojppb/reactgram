@@ -1,89 +1,89 @@
 @import '../common/constants';
 
 .notifications-arrow {
-    position: absolute;
-    top: 27px;
-    border: 1px solid $very-light-gray;
-    width: 15px;
-    height: 15px;
-    transform: rotate(45deg);
-    left: 3px;
-    -webkit-box-shadow: 0 0 5px rgba(0,0,0,.0975);
-    box-shadow: 0 0 5px rgba(0,0,0,.0975);
+  position: absolute;
+  top: 27px;
+  border: 1px solid $very-light-gray;
+  width: 15px;
+  height: 15px;
+  transform: rotate(45deg);
+  left: 3px;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.0975);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.0975);
 }
 
 .notifications-arrow-cover {
-    position: absolute;
-    top: 29px;
-    background-color: white;
-    width: 15px;
-    height: 15px;
-    transform: rotate(45deg);
-    left: 3px;
-    z-index: 30;
+  position: absolute;
+  top: 29px;
+  background-color: white;
+  width: 15px;
+  height: 15px;
+  transform: rotate(45deg);
+  left: 3px;
+  z-index: 30;
 }
 
 .notifications-overlay {
-    position: absolute;
-    top: 35px;
-    min-height: 100px;
-    max-height: 400px;
-    overflow-y: scroll;
-    background-color: white;
-    border: 1px solid $very-light-gray;
-    border-radius: 3px;
-    margin-left: -450px;
-    width: 500px;
-    -webkit-box-shadow: 0 0 5px rgba(0,0,0,.0975);
-    box-shadow: 0 0 5px rgba(0,0,0,.0975);
+  position: absolute;
+  top: 35px;
+  min-height: 100px;
+  max-height: 400px;
+  overflow-y: scroll;
+  background-color: white;
+  border: 1px solid $very-light-gray;
+  border-radius: 3px;
+  margin-left: -450px;
+  width: 500px;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.0975);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.0975);
 
-    display: grid;
-    grid-template-rows: auto;
-    grid-auto-rows: auto;
+  display: grid;
+  grid-template-rows: auto;
+  grid-auto-rows: auto;
 }
 
 .notification-item {
-    z-index: 40;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    padding: 15px;
-    &:hover {
-        background-color: $very-light-gray;
-        cursor: pointer;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 15px;
+  &:hover {
+    background-color: $very-light-gray;
+    cursor: pointer;
+  }
+
+  .user-sm {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+  }
+
+  .round {
+    border-radius: 50%;
+  }
+
+  .post-thumb {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+  }
+
+  .description {
+    margin: 0 10px;
+    span {
+      display: inline-block;
+      margin: 0 2px;
     }
-    
-    .user-sm {
-        width: 30px;
-        height: 30px;
-        object-fit: cover;
+    .content {
+      font-size: 14px;
     }
 
-    .round {
-        border-radius: 50%;
+    .time {
+      font-size: 12px;
+      color: $light-gray;
     }
-
-    .post-thumb {
-        width: 40px;
-        height: 40px;
-        object-fit: cover;
-    }
-
-    .description {
-        margin: 0 10px;
-        span {
-            display: inline-block;
-            margin: 0 2px;
-        }
-        .content {
-            font-size: 14px;
-        }
-
-        .time {
-            font-size: 12px;
-            color: $light-gray;
-        }
-    }
+  }
 }
 
 .notification-sheet {
@@ -109,7 +109,7 @@
       left: 0;
       right: 100%;
     }
-    
+
     &.is-error {
       background-color: $dark-red;
       .progress {

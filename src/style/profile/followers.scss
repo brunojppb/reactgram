@@ -1,10 +1,10 @@
 @import '../common/constants';
 
 .followers-container {
-  width: 100%; 
-  max-width: 400px; 
+  width: 100%;
+  max-width: 400px;
   min-height: 300px;
-  max-height: 90vh; 
+  max-height: 90vh;
   background-color: white;
   border-radius: 10px;
   position: relative;
@@ -33,7 +33,6 @@
       max-height: 100%;
     }
   }
-
 }
 
 .link {
@@ -46,7 +45,7 @@
   &.upload:disabled {
     color: $light-gray !important;
     &:hover {
-        cursor: not-allowed;
+      cursor: not-allowed;
     }
   }
 }
@@ -59,7 +58,8 @@
   &:hover {
     opacity: 1;
   }
-  &:before, &:after {
+  &:before,
+  &:after {
     position: absolute;
     top: 0;
     content: ' ';
@@ -81,5 +81,4 @@
   grid-template-columns: auto 1fr auto;
   grid-gap: 10px;
   align-items: center;
-
 }

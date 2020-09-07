@@ -1,12 +1,12 @@
-@import "../common/constants";
+@import '../common/constants';
 
-.home-wrapper { 
+.home-wrapper {
   display: grid;
   grid-template-rows: 1fr;
   grid-gap: 50px;
   justify-items: center;
   padding: 50px 0;
-  
+
   .home {
     display: grid;
     grid-template-columns: 454px 348px;
@@ -38,7 +38,7 @@
         display: none;
       }
     }
-  
+
     .home-form-container {
       background-color: white;
       border: 1px solid #e6e6e6;
@@ -46,5 +46,4 @@
       padding: 40px;
     }
   }
-
 }

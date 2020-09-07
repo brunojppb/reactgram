@@ -25,8 +25,8 @@
     display: grid;
     grid-template-rows: auto 1fr;
     grid-template-areas:
-        "header"
-        "content";
+      'header'
+      'content';
 
     .comments-container {
       position: absolute;
@@ -43,18 +43,16 @@
     .post-controls {
       background-color: white;
     }
-
   }
 
   .add-comment {
-      padding: 10px;
-      border-top: 1px solid $very-light-gray;
-      @media screen and (max-width: 600px) {
-        position: static;
-        bottom: unset;
-        left: unset;
-        right: unset;
-      }
+    padding: 10px;
+    border-top: 1px solid $very-light-gray;
+    @media screen and (max-width: 600px) {
+      position: static;
+      bottom: unset;
+      left: unset;
+      right: unset;
     }
-
+  }
 }

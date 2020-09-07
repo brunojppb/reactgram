@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { NavLink, Switch, Route } from 'react-router-dom'
 import Routes from '../../Routes'
 import { useAuth } from '../auth/AuthWrapper'

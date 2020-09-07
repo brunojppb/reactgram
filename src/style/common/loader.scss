@@ -1,5 +1,4 @@
 .loader-container {
-
   position: fixed;
   top: 0;
   right: 0;
@@ -12,8 +11,8 @@
   align-items: center;
   align-content: center;
 
-
-  .loader, .loader:after {
+  .loader,
+  .loader:after {
     border-radius: 50%;
     width: 8em;
     height: 8em;
@@ -22,9 +21,9 @@
     position: relative;
     margin: 60px auto;
     font-size: 10px;
-    border-top: 1em solid rgba(56,151,240, 0.2);
-    border-right: 1em solid rgba(56,151,240, 0.2);
-    border-bottom: 1em solid rgba(56,151,240, 0.2);
+    border-top: 1em solid rgba(56, 151, 240, 0.2);
+    border-right: 1em solid rgba(56, 151, 240, 0.2);
+    border-bottom: 1em solid rgba(56, 151, 240, 0.2);
     border-left: 1em solid #3897f0;
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
