@@ -92,7 +92,7 @@ export const PostControls = ({ postId, didLike, onLikeChange }) => {
 }
 
 export const PostReactions = ({ comment, user, likes }) => {
-  const likeText = likes !== 1 ? 'like' : 'likes'
+  const likeText = likes === 1 ? 'like' : 'likes'
 
   return (
     <div className="post-reactions">
