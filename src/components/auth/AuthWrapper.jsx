@@ -84,11 +84,13 @@ export const AuthWrapper = ({ children }) => {
 }
 
 export function useAuth() {
-  const { user, onLogout, onLogin, updateUser } = useContext(AuthContext)
-  return {
-    user,
-    onLogout,
-    onLogin,
-    updateUser,
+  const context = useContext(AuthContext)
+  if (context === null) {
+    throw new Error(
+      'useAuth must be used within AuthWrapper.' +
+        '\n' +
+        'Make sure to put <AuthWrapper> on top of you component tree'
+    )
   }
+  return context
 }

@@ -1,7 +1,7 @@
 import React, { useState, createContext, useCallback, useContext } from 'react'
 import { animated, useTransition } from 'react-spring'
 
-const GlobalNotificationContext = createContext(null)
+const NotificationContext = createContext(null)
 
 const DURATION = 4000
 let id = 0
@@ -38,7 +38,7 @@ export const NotificationWrapper = ({ children }) => {
   }, [])
 
   return (
-    <GlobalNotificationContext.Provider value={{ showNotification }}>
+    <NotificationContext.Provider value={{ showNotification }}>
       {children}
       <div className="notification-sheet">
         {transitions.map(({ key, item, props: { progress, ...style } }) => {
@@ -53,7 +53,7 @@ export const NotificationWrapper = ({ children }) => {
           )
         })}
       </div>
-    </GlobalNotificationContext.Provider>
+    </NotificationContext.Provider>
   )
 }
 
@@ -71,6 +71,13 @@ const NotificationItem = ({ progress, springStyle, message, isError }) => {
 }
 
 export function useNotification() {
-  const { showNotification } = useContext(GlobalNotificationContext)
-  return { showNotification }
+  const context = useContext(NotificationContext)
+  if (context === null) {
+    throw new Error(
+      'useNotification must be used within NotificationWrapper.' +
+        '\n' +
+        'Make sure to put <NotificationWrapper> on top of you component tree'
+    )
+  }
+  return context
 }
