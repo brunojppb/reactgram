@@ -1,4 +1,10 @@
-import React, { useState, createContext, useEffect, useCallback } from 'react'
+import React, {
+  useState,
+  createContext,
+  useEffect,
+  useCallback,
+  useContext,
+} from 'react'
 import Cookies from 'universal-cookie'
 import {
   getProfile,
@@ -8,7 +14,7 @@ import {
 } from '../../network/backend'
 import { Loader } from '../common/Loader'
 
-export const AuthContext = createContext(null)
+const AuthContext = createContext(null)
 export const AuthWrapper = ({ children }) => {
   const [{ user, isLoading }, setState] = useState({
     user: null,
@@ -75,4 +81,14 @@ export const AuthWrapper = ({ children }) => {
       {children}
     </AuthContext.Provider>
   )
+}
+
+export function useAuth() {
+  const { user, onLogout, onLogin, updateUser } = useContext(AuthContext)
+  return {
+    user,
+    onLogout,
+    onLogin,
+    updateUser,
+  }
 }
