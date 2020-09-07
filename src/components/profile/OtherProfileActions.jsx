@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react'
-import { GlobalNotificationContext } from '../common/NotificationSheet'
+import React, { useState } from 'react'
+import { useNotification } from '../common/NotificationSheet'
 import { deleteUnfollowUser, postFollowUser } from '../../network/backend'
 import { useAuth } from '../auth/AuthWrapper'
 
@@ -9,7 +9,7 @@ export const OtherProfileActions = ({
   onFollowingChange,
 }) => {
   const [isLoading, setIsLoading] = useState(false)
-  const { showNotification } = useContext(GlobalNotificationContext)
+  const { showNotification } = useNotification()
   const { user } = useAuth()
 
   const btnClass = isFollowing ? 'btn-default' : 'btn-primary'

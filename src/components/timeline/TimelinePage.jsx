@@ -1,8 +1,8 @@
-import React, { useReducer, useEffect, useContext } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import { Post } from '../post/Post'
 import { ProfileSummary } from './ProfileSummary'
 import { getFeed, deletePost } from '../../network/backend'
-import { GlobalNotificationContext } from '../common/NotificationSheet'
+import { useNotification } from '../common/NotificationSheet'
 import { useAuth } from '../auth/AuthWrapper'
 import { Link } from 'react-router-dom'
 import Routes from '../../Routes'
@@ -61,7 +61,7 @@ const reducer = (state, action) => {
 
 export const TimelinePage = () => {
   const { user } = useAuth()
-  const { showNotification } = useContext(GlobalNotificationContext)
+  const { showNotification } = useNotification()
   const [{ feed, page, isLoading }, dispatch] = useReducer(reducer, {
     feed: [],
     page: 1,

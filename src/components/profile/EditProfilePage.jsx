@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { useAuth } from '../auth/AuthWrapper'
 import { UserProfileImage } from './UserProfileImage'
 import { useForm } from '../../hooks/useForm'
@@ -7,11 +7,11 @@ import {
   postUploadImage,
   postUpdateProfilePicture,
 } from '../../network/backend'
-import { GlobalNotificationContext } from '../common/NotificationSheet'
+import { useNotification } from '../common/NotificationSheet'
 
 export const EditProfilePage = () => {
   const { user, updateUser } = useAuth()
-  const { showNotification } = useContext(GlobalNotificationContext)
+  const { showNotification } = useNotification()
   const [isUpdating, setIsUpdating] = useState(false)
   const inputRef = useRef(null)
 

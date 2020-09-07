@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { CommentWithPicture, PostControls } from './Post'
 import { useParams } from 'react-router-dom'
 import { getPost, getPostComments, postComment } from '../../network/backend'
 import { UserProfileImage } from '../profile/UserProfileImage'
 import { Link } from 'react-router-dom'
 import Routes from '../../Routes'
-import { GlobalNotificationContext } from '../common/NotificationSheet'
+import { useNotification } from '../common/NotificationSheet'
 
 export const PostPage = () => {
   const [post, set] = useState(null)
@@ -55,7 +55,7 @@ const Post = ({ id, pictureUrl, text, didLike, user, onLikeChange }) => {
 const PostComments = ({ postId, didLike, onLikeChange, text, user }) => {
   const [comments, setComments] = useState([])
   const [isPosting, setIsPosting] = useState(false)
-  const { showNotification } = useContext(GlobalNotificationContext)
+  const { showNotification } = useNotification()
   const inputRef = useRef(null)
 
   useEffect(() => {

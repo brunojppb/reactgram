@@ -1,15 +1,15 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Routes from '../../Routes'
 import { HomePage } from './HomePage'
 import { useForm } from '../../hooks/useForm'
 import { postSignup } from '../../network/backend'
 import { useAuth } from '../auth/AuthWrapper'
-import { GlobalNotificationContext } from '../common/NotificationSheet'
+import { useNotification } from '../common/NotificationSheet'
 
 export const SignupPage = () => {
   const { onLogin } = useAuth()
-  const { showNotification } = useContext(GlobalNotificationContext)
+  const { showNotification } = useNotification()
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const [, onSubmit, onChange] = useForm((submitValues) => {
