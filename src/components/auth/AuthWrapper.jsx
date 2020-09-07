@@ -27,15 +27,21 @@ export const AuthWrapper = ({ children }) => {
   }, [])
 
   const fetchProfile = useCallback(() => {
-    return getProfile()
-      .then((response) => {
-        const { user } = response.data
-        setState((state) => ({ ...state, user, isLoading: false }))
-      })
-      .catch((error) => {
-        console.log('could not get user profile', error.response)
-        setState((state) => ({ ...state, user: null, isLoading: false }))
-      })
+    const authToken = new Cookies().get(AUTH_COOKIE_NAME)
+    if (authToken) {
+      return getProfile()
+        .then((response) => {
+          const { user } = response.data
+          setState((state) => ({ ...state, user, isLoading: false }))
+        })
+        .catch((error) => {
+          console.log('could not get user profile', error.response)
+          setState((state) => ({ ...state, user: null, isLoading: false }))
+        })
+    } else {
+      setState((state) => ({ ...state, user: null, isLoading: false }))
+      return Promise.resolve()
+    }
   }, [])
 
   const onLogout = () => {
