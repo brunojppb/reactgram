@@ -1,0 +1,68 @@
+@import '../common/constants';
+
+.post {
+  background-color: white;
+  border: 1px solid $very-light-gray;
+  display: grid;
+  grid-template-rows: 1fr;
+
+  .post-settings:hover {
+    cursor: pointer;
+  }
+}
+
+.post-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-gap: 10px;
+  align-items: center;
+  padding: 10px;
+}
+
+.post-content {
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+.post-controls {
+  display: grid;
+  padding: 10px;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 12px;
+  justify-content: start;
+  button,
+  a {
+    font-size: 20px;
+  }
+}
+
+.post-reactions {
+  font-size: 12px;
+  padding: 10px;
+  .likes {
+    font-weight: 600;
+  }
+}
+
+.comments-container {
+  padding: 5px 0;
+
+  .comment {
+    margin: 5px 0;
+  }
+
+  .username {
+    margin-right: 5px;
+  }
+
+  .comment-picture-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 5px;
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+}

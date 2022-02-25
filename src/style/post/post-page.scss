@@ -1,0 +1,58 @@
+@import '../common/constants';
+.post-page-container {
+  min-height: 300px;
+  background-color: white;
+  display: grid;
+  grid-template-rows: auto auto auto;
+
+  & > img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .post-header {
+    border-bottom: 1px solid $very-light-gray;
+    padding: 20px;
+  }
+
+  .post-details-container {
+    border: 1px solid $very-light-gray;
+    overflow: auto;
+    border-radius: 0 3px 3px 0;
+    background-color: white;
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      'header'
+      'content';
+
+    .comments-container {
+      position: absolute;
+      top: 78px;
+      bottom: 0;
+      overflow-y: scroll;
+      padding: 0;
+      border-bottom: 1px solid $very-light-gray;
+      .list {
+        margin-bottom: 80px;
+      }
+    }
+
+    .post-controls {
+      background-color: white;
+    }
+  }
+
+  .add-comment {
+    padding: 10px;
+    border-top: 1px solid $very-light-gray;
+    @media screen and (max-width: 600px) {
+      position: static;
+      bottom: unset;
+      left: unset;
+      right: unset;
+    }
+  }
+}

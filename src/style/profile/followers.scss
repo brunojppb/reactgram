@@ -1,0 +1,84 @@
+@import '../common/constants';
+
+.followers-container {
+  width: 100%;
+  max-width: 400px;
+  min-height: 300px;
+  max-height: 90vh;
+  background-color: white;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  .header {
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    border-bottom: 1px solid $very-light-gray;
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+  }
+  .content {
+    // position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    max-height: 80vh;
+    width: 100%;
+    overflow-y: scroll;
+    .list {
+      overflow-y: scroll;
+      max-height: 100%;
+    }
+  }
+}
+
+.link {
+  border: none;
+  background-color: unset;
+  padding: 0;
+  &:hover {
+    cursor: pointer;
+  }
+  &.upload:disabled {
+    color: $light-gray !important;
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+}
+
+.close-btn {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  opacity: 0.3;
+  &:hover {
+    opacity: 1;
+  }
+  &:before,
+  &:after {
+    position: absolute;
+    top: 0;
+    content: ' ';
+    height: 25px;
+    width: 1px;
+    background-color: #333;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
+
+.follower-item {
+  padding: 10px 15px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-gap: 10px;
+  align-items: center;
+}

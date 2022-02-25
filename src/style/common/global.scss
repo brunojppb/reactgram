@@ -1,0 +1,142 @@
+@import 'constants';
+
+#root,
+body,
+html {
+  min-height: 100vh;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+}
+
+body {
+  background-color: $background-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 5px 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-size: unset;
+  border: unset;
+  padding: unset;
+  background-color: unset;
+}
+
+main {
+  padding-top: 120px;
+  padding-bottom: 30px;
+  display: grid;
+  grid-template-columns: minmax(0, $max-container-width);
+  justify-content: center;
+  @media screen and (max-width: $max-container-width) {
+    padding-top: 100px;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.title {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: $light-gray;
+  margin-bottom: 10px;
+}
+
+.notice {
+  color: $light-gray;
+  font-size: 12px;
+  margin: 15px 0;
+  a {
+    color: $light-gray;
+    font-weight: bold;
+  }
+}
+
+.grid-divider {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-gap: 5px;
+  align-items: center;
+  &::before,
+  &::after {
+    display: block;
+    content: '';
+    height: 1px;
+    background-color: $very-light-gray;
+  }
+}
+
+.username {
+  font-weight: bold;
+  font-size: 12px;
+  text-align: left;
+}
+
+.user-img-small {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+}
+
+.user-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+}
+
+.user-img-big {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+}
+
+.menu-overlay {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  background-color: rgba(1, 1, 1, 0.5);
+}
+
+.load-more-container {
+  width: 100%;
+  text-align: center;
+}

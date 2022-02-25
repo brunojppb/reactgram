@@ -1,0 +1,55 @@
+@import '../common/constants';
+.timeline {
+  display: grid;
+  grid-template-columns: minmax(0, 615px) 1fr;
+  grid-gap: 20px;
+
+  @media screen and (max-width: $max-container-width) {
+    grid-template-columns: minmax(0, 615px);
+    justify-content: center;
+  }
+
+  .posts {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-gap: 20px;
+
+    .empty-feed {
+      p {
+        text-align: center;
+        line-height: 1.5;
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .profile-suggestions-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 10px;
+    align-items: center;
+    height: 50px;
+    .profile-details {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-gap: 5px;
+      align-items: center;
+      .profile-stats {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        font-size: 10px;
+        color: $light-gray;
+      }
+    }
+
+    .profile-suggestions {
+      display: grid;
+    }
+
+    @media screen and (max-width: $max-container-width) {
+      display: none;
+    }
+  }
+}

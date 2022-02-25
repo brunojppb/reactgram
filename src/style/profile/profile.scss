@@ -1,0 +1,138 @@
+@import '../common/constants';
+
+.profile-page {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: start;
+  grid-gap: 30px;
+}
+
+.profile-stats-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 100px;
+  padding: 0 40px;
+
+  .profile-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+
+    .profile-settings {
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      grid-gap: 15px;
+      justify-items: start;
+      align-items: center;
+      span {
+        font-size: 22px;
+      }
+
+      @media screen and(max-width: 615px) {
+        grid-template-areas: 'name edit settings';
+        span {
+          grid-column-start: 1;
+          grid-column-end: -1;
+        }
+      }
+    }
+
+    .profile-stats {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      grid-gap: 30px;
+      justify-content: start;
+
+      @media screen and(max-width: 615px) {
+        grid-gap: 10px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  // Mobile
+  @media screen and (max-width: 615px) {
+    grid-gap: 20px;
+    img {
+      width: 77px;
+      height: 77px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.user-posts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 293px);
+  grid-auto-rows: 293px;
+  grid-gap: 5px;
+  justify-content: center;
+
+  @media screen and(max-width: $max-container-width) {
+    grid-template-columns: repeat(auto-fill, 200px);
+    grid-auto-rows: 200px;
+  }
+
+  @media screen and(max-width: 610px) {
+    grid-template-columns: repeat(auto-fill, 120px);
+    grid-auto-rows: 120px;
+  }
+
+  .post-thumb {
+    position: relative;
+    overflow: hidden;
+    img {
+      background-color: $very-light-gray;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .post-stats-overlay {
+      position: absolute;
+      background-color: rgba(1, 1, 1, 0.4);
+      color: white;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-gap: 10px;
+      align-items: center;
+      justify-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.1s ease-in;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.settings-menu-overlay {
+  padding: 0;
+  background-color: white;
+  width: 60%;
+  max-width: 400px;
+  list-style-type: none;
+  border-radius: 8px;
+  overflow: hidden;
+  li {
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    a,
+    button {
+      width: 100%;
+      display: block;
+      padding: 12px 0;
+      border-bottom: 1px solid $very-light-gray;
+      &:hover {
+        cursor: pointer;
+        background-color: $very-light-gray;
+      }
+    }
+  }
+}
